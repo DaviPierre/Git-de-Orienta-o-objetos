@@ -1,4 +1,9 @@
 # Git-de-Orienta-o-objetos
+
+Integrantes
+ - João Paulo Monteiro de Barros Ceva Rodrigues - 202045141
+
+
 A primeira entrega do trabalho avaliativo é dividida em 4 pacotes:
 
 - appMain;
