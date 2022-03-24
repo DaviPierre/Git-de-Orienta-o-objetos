@@ -1,10 +1,15 @@
 # Git-de-Orienta-o-objetos
 
-Integrantes
- - Heitor Marques Simões Barbosa - 202016462
- - João Paulo Monteiro de Barros Ceva Rodrigues - 202045141
- - Rodrigo de Andrade Lima Orlandi - 202017129
- - Matheus Barros do Nascimento - 190126515
+
+
+|Integrantes|Matrícula|
+|--|--|
+|Heitor Marques Simões Barbosa|202016462|
+|João Paulo Monteiro de Barros Ceva Rodrigues|202045141|
+|Rodrigo de Andrade Lima Orlandi|202017129|
+|Matheus Barros do Nascimento|190126515|
+|Breno Henrique de Souza|202015984|
+
  
 
 A primeira entrega do trabalho avaliativo é dividida em 4 pacotes:
