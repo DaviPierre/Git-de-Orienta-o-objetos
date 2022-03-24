@@ -3,6 +3,7 @@
 Integrantes
  - João Paulo Monteiro de Barros Ceva Rodrigues - 202045141
  - Rodrigo de Andrade Lima Orlande - 202017129
+ - Heitor Marques Simões Barbosa - 202016462
 
 A primeira entrega do trabalho avaliativo é dividida em 4 pacotes:
 
