@@ -4,6 +4,7 @@ Integrantes
  - Heitor Marques Simões Barbosa - 202016462
  - João Paulo Monteiro de Barros Ceva Rodrigues - 202045141
  - Rodrigo de Andrade Lima Orlandi - 202017129
+ - Matheus Barros do Nascimento - 190126515
  
 
 A primeira entrega do trabalho avaliativo é dividida em 4 pacotes:
