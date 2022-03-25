@@ -10,6 +10,7 @@ public class V_passageiro extends V_utilitario{
 	
 	public int getMaxOcupantes(){
         
+        cavalo;
 
         System.out.println("-------------------------------------");
         System.out.println(" Por favor, digite o número máximo de ocupantes.\n");
