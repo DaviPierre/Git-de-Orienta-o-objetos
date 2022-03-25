@@ -14,7 +14,7 @@ public class V_passeio extends Veiculo {
 	
 	
 //Preparando o vetor de strings do Enum	
-	static String[] categoriaPasseio = {"Compacto", "Luxo", "Sedan", "SUV"};
+	String[] categoriaPasseio = {"Compacto", "Luxo", "Sedan", "SUV"};
 
 	public static String escolherCategoriaPasseio() {		
 		int sel;

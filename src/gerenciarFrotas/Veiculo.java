@@ -113,12 +113,18 @@ public class Veiculo {
     public void cadastrarVeiculo() { //Aqui que os veículo(s) serão registrados, com uma referência para quando necessitar de referir a eles para pesquisa.
     	
     }
+
+    public void cadastraValoresAluguel(){
+       
+       ValoresAluguel diariaVeiculo;
+       
+    
+   }
     
     // Referência "diariaVeiculo" do tipo ValoresAluguel.
     //---------------------------------------------------------------------
     public void escolherDiaria(){
        
-
        ValoresAluguel diariaVeiculo;
        diariaVeiculo = new ValoresAluguel();
        dVeiculoN = diariaVeiculo.getDiariaN();
