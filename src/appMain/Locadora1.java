@@ -2,6 +2,11 @@ package app;
 
 import java.util.Scanner;
 
+import gerenciarLocatarios.Locatario;
+
+
+import java.util.ArrayList; // Esse import vai servir para registrar diversos usuários, veículos e reservas
+
 
 public class Locadora1 {
 	
@@ -22,9 +27,21 @@ public class Locadora1 {
 					    
 		   			
 			sel1 = sc.nextInt();
-			switch(sel1) {
+			switch(sel1){
+		
         		case 1:
+        			int selecao;			
+        			
         			printarGerenciarLocatarios();
+        			do{
+        				selecao = sc.nextInt();
+        				
+        			}while(selecao < 1 || selecao > 4);
+        			
+        			if(selecao == 1) {
+        				cadastrarLocatario();
+        			}
+        			
         			printarSaindoDoPrograma();
         		           			
         			break;
@@ -162,21 +179,40 @@ public class Locadora1 {
 		System.out.println("Saindo do programa...");   
 	}
 	
-	public void cadastrarLocatario() {
+	public static void cadastrarLocatario() {
+				
+		Scanner sc = new Scanner(System.in);
 		CNPJ cnpj;
-		cnpj = new CNPJ();
-		cnpj.getCnpj();
 		
-		Endereco enderecoLocadora;
-		enderecoLocadora = new Endereco();
-		enderecoLocadora.setRua();
-		enderecoLocadora.setNumero();
-		enderecoLocadora.setComplemento();
-		enderecoLocadora.setBairro();
-		enderecoLocadora.setCidade();
-		enderecoLocadora.setEstado();
-		enderecoLocadora.setCep();
+		int FouJ;
 		
+		do {
+			System.out.println("                      CADASTRO DE LOCATÁRIOS");
+			System.out.println("-----------------------------------------------------------------------"); 
+			ArrayList<Locatario> locatario = new ArrayList<Locatario>();
+		    
+			
+			
+			
+			
+			
+			System.out.println(" Por favor, insira se o locatário é uma pessoa física pu jurídica.\n");
+			System.out.println(" 1 - Física");
+			System.out.println(" 2 - Jurídica");
+		
+			FouJ = sc.nextInt();
+		}while(FouJ < 1 || FouJ > 2);
+		
+		if(FouJ == 1){
+			
+			
+			
+		}else{
+			cnpj = new CNPJ(); // Aqui o cnpj é instanciado e chamado, ou seja, a função getCnpj ocorre.
+			System.out.println(cnpj.getCnpj());
+
+		}
+				
 	}
 	
 	public void editarLocatarios() {
