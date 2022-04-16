@@ -10,26 +10,11 @@ public class Locatario {
 	
    int telefone;
    String email; 
- 
-   // Referência de Endereco(classe) e puxando os métodos de lá.
- public void cadastrarEndereco(){
-       Endereco enderecoLocatario;
-       enderecoLocatario = new Endereco();
-       
-       enderecoLocatario.setRua();
-       enderecoLocatario.setNumero();
-       enderecoLocatario.setComplemento();
-       enderecoLocatario.setBairro();
-       enderecoLocatario.setCidade();
-       enderecoLocatario.setEstado();
-       enderecoLocatario.setCep();
-          
-   }
+   
  
   //----------------------------------------------------------------------------------
  //Aqui começam os métodos próprios de "Locatario".
  	public String getEmail() {
- 		System.out.println("---------------------------------------");
 		System.out.println(" Por favor, insira o e-mail do locatário.");
 		
 		email = sc.next();
@@ -45,5 +30,18 @@ public class Locatario {
  			
 		return telefone;
  	}
- 
-}
+ 	
+ 	 // Referência de Endereco(classe) e puxando os métodos de lá.
+ 	// public void cadastrarEndereco(){
+ 	    //   Endereco enderecoLocatario;
+ 	   //    enderecoLocatario = new Endereco();
+ 	       
+ 	     //  enderecoLocatario.setRua();
+ 	  //     enderecoLocatario.setNumero();
+ 	  //     enderecoLocatario.setComplemento();
+ 	  //     enderecoLocatario.setBairro();
+ 	   //    enderecoLocatario.setCidade();
+ 	 //      enderecoLocatario.setEstado();
+ 	   //    enderecoLocatario.setCep();
+ 	          
+ 	   }
