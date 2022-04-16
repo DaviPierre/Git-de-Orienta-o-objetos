@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class PessoaFisica extends Locatario {
 	Scanner sc = new Scanner(System.in);
 	
-	String nomeCompleto, estadoCivil, cpf;
+	String nomeCompleto, estadoCivil;
+	int  cpf;
 	
 	public String getNomeCompleto() {
 		System.out.println("---------------------------------------\n");
@@ -15,10 +16,10 @@ public class PessoaFisica extends Locatario {
 		return nomeCompleto;
 	}
 	
-	public String setCpf() {
+	public int setCpf() {
 		System.out.println("---------------------------------------\n");
 		System.out.println(" Insira o CPF da pessoa física.\n");
-		cpf = sc.next();
+		cpf = sc.nextInt();
 		
 		return cpf;
 	}
