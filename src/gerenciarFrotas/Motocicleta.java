@@ -43,7 +43,7 @@ enum motoPilotagem{Cidade, Estrada, Sport, OffRoad}
             return freiosABS;
         }
             
-        public boolean setPilotoAutomático(){
+        public boolean setPilotoAutomatico(){
             boolean pilotoAutomatico = false;
             int decisao;
             System.out.println("--------------------------");

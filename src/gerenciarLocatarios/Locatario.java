@@ -3,7 +3,6 @@ package gerenciarLocatarios;
 import java.util.Scanner;
 
 // Esse "Import" é necessário pois estamos referenciando uma classe diferente de OUTRO pacote.
-import app.Endereco;
 
 public class Locatario {
  static Scanner sc = new Scanner(System.in);
@@ -14,34 +13,31 @@ public class Locatario {
  
   //----------------------------------------------------------------------------------
  //Aqui começam os métodos próprios de "Locatario".
- 	public String getEmail() {
-		System.out.println(" Por favor, insira o e-mail do locatário.");
-		
-		email = sc.next();
- 			
-		return email;
- 	}
+   
+   public Locatario() {
+	   
+   }
+   
+   public Locatario(String email) {
+	   setEmail(email);
+   }
+   
  
  	public int getTelefone() {
- 		System.out.println("---------------------------------------");
-		System.out.println(" Por favor, insira o telefone do locatário.");
-		
-		telefone = sc.nextInt();
- 			
-		return telefone;
+ 	   System.out.println(telefone);
+ 	   return telefone;
+ 	}
+ 	public void setTelefone(int telefone) {
+ 		this.telefone = telefone;
  	}
  	
- 	 // Referência de Endereco(classe) e puxando os métodos de lá.
- 	// public void cadastrarEndereco(){
- 	    //   Endereco enderecoLocatario;
- 	   //    enderecoLocatario = new Endereco();
- 	       
- 	     //  enderecoLocatario.setRua();
- 	  //     enderecoLocatario.setNumero();
- 	  //     enderecoLocatario.setComplemento();
- 	  //     enderecoLocatario.setBairro();
- 	   //    enderecoLocatario.setCidade();
- 	 //      enderecoLocatario.setEstado();
- 	   //    enderecoLocatario.setCep();
- 	          
+ 	
+ 	public String getEmail() {
+ 		System.out.println(email);
+ 		return email;
+ 	}
+ 	public void setEmail(String email) {
+ 		this.email = email;
+ 	}
+ 	
  	   }

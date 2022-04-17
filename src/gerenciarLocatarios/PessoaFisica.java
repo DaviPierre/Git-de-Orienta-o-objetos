@@ -8,29 +8,40 @@ public class PessoaFisica extends Locatario {
 	String nomeCompleto, estadoCivil;
 	int  cpf;
 	
-	public String getNomeCompleto() {
-		System.out.println("---------------------------------------\n");
-		System.out.println(" Insira o nome completo da pessoa física.\n");
-		nomeCompleto = sc.next();
+	public PessoaFisica() {
 		
+	}
+	
+	public PessoaFisica(String nomeCompleto, String email, int cpf, int telefone) {
+		setNomeCompleto(nomeCompleto);
+		setEmail(email);
+	}
+	
+	public String getNomeCompleto() {
+		System.out.println(nomeCompleto);
 		return nomeCompleto;
 	}
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
 	
-	public int setCpf() {
-		System.out.println("---------------------------------------\n");
-		System.out.println(" Insira o CPF da pessoa física.\n");
-		cpf = sc.nextInt();
-		
+	
+	public int getCpf() {
+		System.out.println(cpf);
 		return cpf;
 	}
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
+	}
 	
-	public String setEstadoCivil() {
-		System.out.println("---------------------------------------\n");
-		System.out.println(" Insira o estado civil da pessoa física.\n");
-		estadoCivil = sc.next();
-		
+	public String getEstadoCivil() {
+		System.out.println(estadoCivil);
 		return estadoCivil;
 	}
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+	
 	
 	public void cadastrarPessoaFisica(){
 		

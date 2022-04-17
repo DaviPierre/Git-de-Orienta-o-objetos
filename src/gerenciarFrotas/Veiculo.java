@@ -116,7 +116,6 @@ public class Veiculo {
 
     public void cadastraValoresAluguel(){
        
-       ValoresAluguel diariaVeiculo;
        
     
    }
@@ -125,12 +124,6 @@ public class Veiculo {
     //---------------------------------------------------------------------
     public void escolherDiaria(){
        
-       ValoresAluguel diariaVeiculo;
-       diariaVeiculo = new ValoresAluguel();
-       dVeiculoN = diariaVeiculo.getDiariaN();
-       dVeiculoR = diariaVeiculo.getDiariaR();
-       dVeiculoE = diariaVeiculo.getDiariaE();
-       dVeiculoM = diariaVeiculo.getValorMensal();
     
    }
     

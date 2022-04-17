@@ -16,20 +16,8 @@ public class V_passeio extends Veiculo {
 //Preparando o vetor de strings do Enum	
 	String[] categoriaPasseio = {"Compacto", "Luxo", "Sedan", "SUV"};
 
-	public static String escolherCategoriaPasseio() {		
-		int sel;
-		do {
-			System.out.println("-------------------------------------");
-        	System.out.println(" Por favor, digite o tipo do seu veículo de passeio.\n");
-        	System.out.println(" 1 - Compacto\n");
-        	System.out.println(" 2 - Luxo\n");
-        	System.out.println(" 3 - Sedan\n");
-        	System.out.println(" 4 - SUV\n");
-        	sel = sc.nextInt();
-		}while(sel > 4 || sel < 1);
-		
-		System.out.println(categoriaPasseio[sel-1]);
-		return  categoriaPasseio[sel-1];
+	public void escolherCategoriaPasseio() {		
+
 	}
 	
 	public boolean arCondicionado(){

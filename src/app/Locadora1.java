@@ -3,24 +3,24 @@ package app;
 import java.util.Scanner;
 
 import gerenciarLocatarios.Locatario;
+import gerenciarLocatarios.PessoaFisica;
 
-
-import java.util.ArrayList; // Esse import vai servir para registrar diversos usu√°rios, ve√≠culos e reservas
+import java.util.ArrayList; // Esse import vai servir para registrar diversos usu·rios, veÌculos e reservas
 
 
 public class Locadora1 {
 	
 	
-// O menu principal contido na fun√ß√£o main - aqui que vai acontecer tudo	
+// O menu principal contido na funÁ„o main - aqui que vai acontecer tudo	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		// Aqui v√£o estar os atributos e as refer√™ncias pertinentes a essa classe.
+		// Aqui v„o estar os atributos e as referÍncias pertinentes a essa classe.
 		//-------------------------------------------------------------------------------
-		int sel1, sel2; // Ints de sele√ß√£o pra funcionar com os do...while
+		int sel1, sel2; // Ints de seleÁ„o pra funcionar com os do...while
 				
 		
-		// A partir daqui √© o c√≥digo do menu.
+		// A partir daqui È o cÛdigo do menu.
 		//-------------------------------------------------------------------------------
 		do {
 			printarMenuPrincipal();
@@ -102,13 +102,13 @@ public class Locadora1 {
 	}
 	
 	//----------------------------------------------------------------------------------------------------------------------------------------------
-	//A partir daqui, est√£o as fun√ß√µes de printar a op√ß√£o correta nos menus.
+	//A partir daqui, est„o as funÁıes de printar a opÁ„o correta nos menus.
 	
 	public static void printarMenuPrincipal() {
 		System.out.println("-----------------------------------------------------------------------");
         System.out.println(" Menu Principal\n");
         
-        System.out.println(" 1) Gerenciar Locat√°rios");
+        System.out.println(" 1) Gerenciar Locat·rios");
         System.out.println(" 2) Gerenciar Frota");
         System.out.println(" 3) Gerenciar Reservas");
         System.out.println(" 4) Gerenciar Locadora");
@@ -117,22 +117,22 @@ public class Locadora1 {
 	
 	public static void printarGerenciarLocatarios() {
 		System.out.println("-----------------------------------------------------------------------");
-        System.out.println(" Menu Locat√°rios\n");
+        System.out.println(" Menu Locat·rios\n");
         
-        System.out.println(" 1) Cadastrar Locat√°rios");
-        System.out.println(" 2) Buscar locat√°rio");
-        System.out.println(" 3) Pesquisar Locat√°rio");
-        System.out.println(" 4) Excluir locat√°rio");
+        System.out.println(" 1) Cadastrar Locat·rios");
+        System.out.println(" 2) Buscar locat·rio");
+        System.out.println(" 3) Pesquisar Locat·rio");
+        System.out.println(" 4) Excluir locat·rio");
 	}	
 	
 	public static void printarGerenciarFrotas() {
 		System.out.println("-----------------------------------------------------------------------");
         System.out.println(" Menu Frotas\n");
         
-        System.out.println(" 1) Cadastrar ve√≠culo");
-        System.out.println(" 2) Buscar ve√≠culo");
-        System.out.println(" 3) Atualizar dados de um ve√≠culo");
-        System.out.println(" 4) Remover ve√≠culo da frota");
+        System.out.println(" 1) Cadastrar veÌculo");
+        System.out.println(" 2) Buscar veÌculo");
+        System.out.println(" 3) Atualizar dados de um veÌculo");
+        System.out.println(" 4) Remover veÌculo da frota");
 	}	
 	
 	public static void printarGerenciarReservas() {
@@ -140,8 +140,8 @@ public class Locadora1 {
         System.out.println(" Menu Reservas\n");
         
         System.out.println(" 1) Realizar reserva");
-        System.out.println(" 2) Emitir relat√≥rio(s) de reserva(s)");
-        System.out.println(" 3) Emitir relat√≥rio consolidado de reserva(s)");
+        System.out.println(" 2) Emitir relatÛrio(s) de reserva(s)");
+        System.out.println(" 3) Emitir relatÛrio consolidado de reserva(s)");
 	}	
 	
 	public static void printarGerenciarLocadora() {
@@ -154,24 +154,24 @@ public class Locadora1 {
 
 	public static void printarCadastrarVeiculos() {
 		System.out.println("-----------------------------------------------------------------------");
-        System.out.println(" Menu Cadastro de Ve√≠culos\n");
+        System.out.println(" Menu Cadastro de VeÌculos\n");
         
-        System.out.println(" 1) Cadastrar ve√≠culo de passeio");
-        System.out.println(" 2) Cadastrar ve√≠culo utilit√°rio");
+        System.out.println(" 1) Cadastrar veÌculo de passeio");
+        System.out.println(" 2) Cadastrar veÌculo utilit·rio");
         System.out.println(" 3) Cadastrar motocicleta");
 	}
 	
 	public static void printarPesquisarVeiculos() {
 		System.out.println("-----------------------------------------------------------------------");
-        System.out.println(" Menu Pesquisa de Ve√≠culos\n");
+        System.out.println(" Menu Pesquisa de VeÌculos\n");
         
-        System.out.println(" 1) Pesquisar ve√≠culo pelo RENAVAM");
-        System.out.println(" 2) Pesquisar ve√≠culo por marca ou modelo");
+        System.out.println(" 1) Pesquisar veÌculo pelo RENAVAM");
+        System.out.println(" 2) Pesquisar veÌculo por marca ou modelo");
 	}
 	
 	public static void printarCasoDefault() {
 		System.out.println("-----------------------------------------------------------------------");
-        System.out.println(" Por favor, insira uma op√ß√£o v√°lida.");   
+        System.out.println(" Por favor, insira uma opÁ„o v·lida.");   
 	}
 	
 	public static void printarSaindoDoPrograma() {
@@ -182,34 +182,57 @@ public class Locadora1 {
 	public static void cadastrarLocatario() {
 				
 		Scanner sc = new Scanner(System.in);
-		CNPJ cnpj;
+		ArrayList<PessoaFisica> pessoaFisica = new ArrayList<PessoaFisica>();
+		
+		String nomeCompleto, email;
+		int cpf, telefone;
 		
 		int FouJ;
-		
 		do {
-			System.out.println("                      CADASTRO DE LOCAT√ÅRIOS");
+			System.out.println("                      CADASTRO DE LOCAT¡RIOS");
 			System.out.println("-----------------------------------------------------------------------"); 
-			ArrayList<Locatario> locatario = new ArrayList<Locatario>();
-		    
-			
-			
-			
-			
-			
-			System.out.println(" Por favor, insira se o locat√°rio √© uma pessoa f√≠sica pu jur√≠dica.\n");
-			System.out.println(" 1 - F√≠sica");
-			System.out.println(" 2 - Jur√≠dica");
+			System.out.println(" Por favor, insira se o locat·rio È uma pessoa fÌsica pu jurÌdica.\n");
+			System.out.println(" 1 - FÌsica");
+			System.out.println(" 2 - JurÌdica");
 		
 			FouJ = sc.nextInt();
 		}while(FouJ < 1 || FouJ > 2);
 		
+		
 		if(FouJ == 1){
+			int pao=0; //remover
+			while(pao<3) { //remover
+				
 			
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira o Nome Completo da pessoa fisica.\n");
+			nomeCompleto = sc.next();
 			
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira o email da pessoa fisica.\n");
+			email = sc.next();
 			
-		}else{
-			cnpj = new CNPJ(); // Aqui o cnpj √© instanciado e chamado, ou seja, a fun√ß√£o getCnpj ocorre.
-			System.out.println(cnpj.getCnpj());
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira o cpf da pessoa fisica.\n");
+			cpf = sc.nextInt();
+
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira o telefone da pessoa fisica.\n");
+			telefone = sc.nextInt();
+			
+			PessoaFisica newPessoaFisica = new PessoaFisica(nomeCompleto, email, cpf, telefone);
+			pessoaFisica.add(newPessoaFisica);
+			for(PessoaFisica listaPessoa:pessoaFisica) {
+				listaPessoa.getNomeCompleto();
+				listaPessoa.getEmail();
+			}
+			
+			pao+=1;
+			} // remover
+			
+		}
+		else{
+
 
 		}
 				
