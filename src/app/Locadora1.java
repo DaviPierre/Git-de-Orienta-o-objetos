@@ -42,7 +42,6 @@ public class Locadora1 {
         				cadastrarLocatario();
         			}
         			
-        			printarSaindoDoPrograma();
         		           			
         			break;
         	
@@ -98,7 +97,7 @@ public class Locadora1 {
         			printarCasoDefault();
         		break;
 			 }   
-		}while(sel1 > 5 || sel1 < 1);
+		}while(sel1 != 5);
 	}
 	
 	//----------------------------------------------------------------------------------------------------------------------------------------------
@@ -229,8 +228,10 @@ public class Locadora1 {
 				listaPessoa.getEmail();
 			}
 
-			} 
-			
+			}else{ //Pessoa Jurídica
+								
+				
+			}
 		} 
 		 
 		{
