@@ -12,18 +12,25 @@ public class PessoaFisica extends Locatario {
 		
 	}
 	
-	public PessoaFisica(String nomeCompleto, String email, int cpf, int telefone) {
-		setNomeCompleto(nomeCompleto);
+	// Aqui entram os dados registrados na main "Locadora1", quando "newPessoaFisica" é instanciada.
+	public PessoaFisica(String nomeCompleto, String email, int cpf, int telefone) { 
+		setNomeCompleto(nomeCompleto); 
 		setEmail(email);
 	}
 	
+	// Função que retorna "nomeCompleto" após o registro devido nesta classe (PessoaFisica) por meio do "setNomeCompleto".
 	public String getNomeCompleto() {
 		System.out.println(nomeCompleto);
 		return nomeCompleto;
 	}
+	
+	
+	//Esse "this" é necessário, pois "nomeCompleto" é uma String diferente em "Locadora1" (estamos em "PessoaFisica").
+    //Essencialmente, a linha 26 pode ser traduzida como: registrando nomeCompleto de "newPessoaFisica" (da classe Locadora1)
+    //propriamente (na classe PessoaFisica).
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
-	}
+	}    
 	
 	
 	public int getCpf() {
@@ -43,8 +50,5 @@ public class PessoaFisica extends Locatario {
 	}
 	
 	
-	public void cadastrarPessoaFisica(){
-		
-
-	}
 }
+
