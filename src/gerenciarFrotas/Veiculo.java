@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Veiculo {
 	 Scanner sc  = new Scanner(System.in);
 	
-    String marca, modelo;
-    int anoFabricacao, anoModelo, renavam, capacidadeTanque;
+    String marca, modelo, renavam;
+    int anoFabricacao, anoModelo, capacidadeTanque;
     
     static float dVeiculoN;
 
@@ -23,25 +23,29 @@ public class Veiculo {
     
     // A partir daqui, estão todos os métodos.
     //---------------------------------------------------------------------
-    public String getMarca(){
+	public Veiculo(String marca, String modelo, String renavam) { 
+		setMarca(marca); 
+		setModelo(modelo);
+		setRenavam(renavam);
+	}
+	
+	
+	public String getMarca() {
+		System.out.println(marca);
+		return marca;
+	}
 
-        System.out.println("-------------------------------------");
-        System.out.println(" Por favor, digite a marca desejada.\n");
-        marca = sc.next();
+   
 
-        return marca;
-
-    }
-
-    public String getModelo(){
-
-        System.out.println("-------------------------------------");
-        System.out.println(" Por favor, digite o modelo desejado.\n");
-        modelo = sc.next();
-
-        return modelo;
-
-    }
+	public String getModelo() {
+		System.out.println(modelo);
+		return modelo;
+	}
+	
+	public String getRenavam() {
+		System.out.println(renavam);
+		return renavam;
+	}
 
     public int getAnoFabricacao(){
 
@@ -63,14 +67,17 @@ public class Veiculo {
 
     }
 
-    public int setRenavam(){
-
-        System.out.println("-------------------------------------");
-        System.out.println(" Por favor, digite renavam do veículo.\n");
-        renavam = sc.nextInt();
-
-        return renavam;
-
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------
+    public void setRenavam(String renavam){
+        this.renavam = renavam;
+    }
+    
+    public void setModelo(String modelo){
+        this.modelo = modelo;
+    }
+    
+    public void setMarca(String marca){
+        this.marca = marca;
     }
     
     public int setCapacidadeTanque(){
