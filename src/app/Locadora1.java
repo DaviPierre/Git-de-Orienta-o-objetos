@@ -2,18 +2,26 @@ package app;
 
 import java.util.Scanner;
 
-import gerenciarLocatarios.Locatario;
 import gerenciarLocatarios.PessoaFisica;
+import gerenciarFrotas.Veiculo;
 
 import java.util.ArrayList; // Esse import vai servir para registrar diversos usuários, veículos e reservas
 
-
 public class Locadora1 {
+	
+	// Esses ArrayLists são as listas de array que vão guardar os dados e número de objetos cadastrados, usados depois para listar os elementos.
+	
 	
 	
 // O menu principal contido na função main - aqui que vai acontecer tudo	
 	public static void main(String[] args) {
+		
+		ArrayList<PessoaFisica> pessoaFisica = new ArrayList<PessoaFisica>();
+	    ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();	
+	    
 		Scanner sc = new Scanner(System.in);
+		
+	   
 		
 		// Aqui vão estar os atributos e as referências pertinentes a essa classe.
 		//-------------------------------------------------------------------------------
@@ -39,7 +47,7 @@ public class Locadora1 {
         			}while(selecao < 1 || selecao > 4);
         			
         			if(selecao == 1) {
-        				cadastrarLocatario();
+        				cadastrarLocatario(pessoaFisica);
         			}
         			
         		           			
@@ -54,25 +62,25 @@ public class Locadora1 {
         				switch(sel2) {
         					case 1:
         						printarCadastrarVeiculos();
-        						printarSaindoDoPrograma();
+        						cadastrarVeiculo(veiculo);
         						break;
         		
-        					case 2:
-        						printarPesquisarVeiculos();
-        						printarSaindoDoPrograma();
-        						break;
+        					 case 2:
+        					 	printarPesquisarVeiculos();
+        					 	printarSaindoDoPrograma();
+        					 	break;
        					
-        					case 3:                          	
+        					 case 3:                          	
         						printarSaindoDoPrograma();    	
-        						break;                      
+        					 	break;                      
         				                               	
-        					case 4:                        
-        						printarSaindoDoPrograma();    
-        						break;                        
+        					 case 4:                        
+        					 	printarSaindoDoPrograma();    
+        					 	break;                        
                     
-        					default:
-        						printarCasoDefault();
-        						break;
+        					 default:
+        					 	printarCasoDefault();
+        					 	break;
         					}
         				}while(sel2 > 4 || sel2 < 1);	
         			break;
@@ -178,10 +186,11 @@ public class Locadora1 {
 		System.out.println("Saindo do programa...");   
 	}
 	
-	public static void cadastrarLocatario() {
+	
+	public static void cadastrarLocatario(ArrayList<PessoaFisica> pessoaFisica) {
 				
 		Scanner sc = new Scanner(System.in);
-		ArrayList<PessoaFisica> pessoaFisica = new ArrayList<PessoaFisica>();
+		
 		
 		String nomeCompleto, email;
 		int cpf, telefone;
@@ -224,20 +233,71 @@ public class Locadora1 {
 			
 			// Por fim, criamos uma classe "listaPessoa" que imprima os atributos por meio dos métodos/funções "get".
 			for(PessoaFisica listaPessoa:pessoaFisica) {
+				System.out.println("---------------------------------------\n");
 				listaPessoa.getNomeCompleto();
 				listaPessoa.getEmail();
 			}
 
-			}else{ //Pessoa Jurídica
-								
+			} 
+			
+		} 
+	
+
+
+	
+	public static void cadastrarVeiculo(ArrayList<Veiculo> veiculo) {
+
+		Scanner sc = new Scanner(System.in);
+		
+
+		String marca, modelo, renavam;
+
+		int simOuNao;
+
+		do {
+			System.out.println("                      CADASTRO DE VEÍCULOS");
+			System.out.println("-----------------------------------------------------------------------"); 
+			System.out.println(" Você quer cadastrar um veículo?\n");
+			System.out.println(" 1 - Sim");
+			System.out.println(" 2 - Não");
+		
+			simOuNao = sc.nextInt();
+			
+			
+			
+			
+		}while(simOuNao < 1 || simOuNao > 2);
+
+		if(simOuNao == 1){
+
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira a marca.\n");
+			marca = sc.next();
+			
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira o modelo.\n");
+			modelo = sc.next();
+			
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira o renavam.\n");
+			renavam = sc.next();
+
+			Veiculo newVeiculo = new Veiculo(marca, modelo, renavam);
+			veiculo.add(newVeiculo);
+			
+			// Por fim, criamos uma classe "listaPessoa" que imprima os atributos por meio dos métodos/funções "get".
+			for(Veiculo listaVeiculo:veiculo) {
+				System.out.println("---------------------------------------\n");
+				listaVeiculo.getMarca();
+				listaVeiculo.getModelo();
+				listaVeiculo.getRenavam();
 				
 			}
-		} 
-		 
-		{
-
-
+			
+			}
 		}
+
+
 				
 	
 	public void editarLocatarios() {
