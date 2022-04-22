@@ -33,53 +33,34 @@ public class Veiculo {
 	public String getMarca() {
 		System.out.println(marca);
 		return marca;
-	}
-
-   
-
+	}  
 	public String getModelo() {
 		System.out.println(modelo);
 		return modelo;
-	}
-	
+	}	
 	public String getRenavam() {
 		System.out.println(renavam);
 		return renavam;
 	}
-
     public int getAnoFabricacao(){
-
-        System.out.println("-------------------------------------");
-        System.out.println(" Por favor, digite o ano de fabricação do veículo.\n");
-        anoFabricacao = sc.nextInt();
-
+    	System.out.println(anoFabricacao);
         return anoFabricacao;
-
     }
-
     public int getAnoModelo(){
-
-        System.out.println("-------------------------------------");
-        System.out.println(" Por favor, digite o ano do modelo do veículo.\n");
-        anoModelo = sc.nextInt();
-
+    	System.out.println(anoModelo);
         return anoModelo;
-
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------
     public void setRenavam(String renavam){
         this.renavam = renavam;
     }
-    
     public void setModelo(String modelo){
         this.modelo = modelo;
     }
-    
     public void setMarca(String marca){
         this.marca = marca;
-    }
-    
+    } 
     public int setCapacidadeTanque(){
 
         System.out.println("-------------------------------------");
