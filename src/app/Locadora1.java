@@ -2,7 +2,9 @@ package app;
 
 import java.util.Scanner;
 
+import gerenciarLocatarios.Locatario;
 import gerenciarLocatarios.PessoaFisica;
+
 import gerenciarFrotas.Veiculo;
 
 import java.util.ArrayList; // Esse import vai servir para registrar diversos usuários, veículos e reservas
@@ -16,8 +18,9 @@ public class Locadora1 {
 // O menu principal contido na função main - aqui que vai acontecer tudo	
 	public static void main(String[] args) {
 		
-		ArrayList<PessoaFisica> pessoaFisica = new ArrayList<PessoaFisica>();
-	    ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();	
+	    ArrayList<Locatario> locatario = new ArrayList<Locatario>(); 
+	    
+	    ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();
 	    
 		Scanner sc = new Scanner(System.in);
 		
@@ -47,7 +50,7 @@ public class Locadora1 {
         			}while(selecao < 1 || selecao > 4);
         			
         			if(selecao == 1) {
-        				cadastrarLocatario(pessoaFisica);
+        				cadastrarLocatario(locatario);
         			}
         			
         		           			
@@ -187,13 +190,12 @@ public class Locadora1 {
 	}
 	
 	
-	public static void cadastrarLocatario(ArrayList<PessoaFisica> pessoaFisica) {
+	public static void cadastrarLocatario(ArrayList<Locatario> locatario) {
 				
 		Scanner sc = new Scanner(System.in);
 		
-		
-		String nomeCompleto, email;
-		int cpf, telefone;
+		String nomeCompleto, email, nomeSocial, cpf, estadoCivil, cnpj;
+		int telefone;
 		
 		int FouJ;
 		do {
@@ -211,8 +213,12 @@ public class Locadora1 {
 				
 			// Antes de atribuir as informações, vamos primeiro pegar todos os dados necessários para a classe.
 			System.out.println("---------------------------------------\n");
-			System.out.println(" Insira o Nome Completo da pessoa fisica.\n");
+			System.out.println(" Insira o nome completo da pessoa fisica.\n");
 			nomeCompleto = sc.next();
+			
+			System.out.println("---------------------------------------\n");
+			System.out.println(" Insira o estado civil da pessoa fisica.\n");
+			estadoCivil = sc.next();
 			
 			System.out.println("---------------------------------------\n");
 			System.out.println(" Insira o email da pessoa fisica.\n");
@@ -220,25 +226,81 @@ public class Locadora1 {
 			
 			System.out.println("---------------------------------------\n");
 			System.out.println(" Insira o cpf da pessoa fisica.\n");
-			cpf = sc.nextInt();
+			cpf = sc.next();
 
 			System.out.println("---------------------------------------\n");
 			System.out.println(" Insira o telefone da pessoa fisica.\n");
 			telefone = sc.nextInt();
 			
+		    nomeSocial = null; //Nulls necessários pois locatários podem ser ambas pessoas físicas e jurídicas, todas as infos precisam ser passadas.
+		    cnpj = null;
+		    
 			// Agora, vamos instanciar uma referência "newPessoaFisica" que contenha todos os dados informados.
 			// Logo depois, adicionamos "newPessoaFisica" na Lista de Array chamada "pessoaFisica".
-			PessoaFisica newPessoaFisica = new PessoaFisica(nomeCompleto, email, cpf, telefone);
-			pessoaFisica.add(newPessoaFisica);
+			Locatario newLocatario = new Locatario(nomeCompleto, nomeSocial, email, cpf, cnpj, telefone, estadoCivil);
+			locatario.add(newLocatario);
 			
 			// Por fim, criamos uma classe "listaPessoa" que imprima os atributos por meio dos métodos/funções "get".
-			for(PessoaFisica listaPessoa:pessoaFisica) {
+			for(Locatario listaLocatario: locatario) {
 				System.out.println("---------------------------------------\n");
-				listaPessoa.getNomeCompleto();
-				listaPessoa.getEmail();
+
+				System.out.print("NOME COMPLETO:\n");
+				listaLocatario.getNomeCompleto();
+				System.out.print("NOME SOCIAL:\n");
+				listaLocatario.getNomeSocial();
+				System.out.print("EMAIL:\n");
+				listaLocatario.getEmail();
+				System.out.print("CPF:\n");
+				listaLocatario.getCpf();
+				System.out.print("CNPJ:\n");
+				listaLocatario.getCnpj();
+				System.out.println("---------------------------------------\n");
+				
 			}
 
-			} 
+			}else{  // Pessoa Jurídica
+				
+				System.out.println("---------------------------------------\n");
+				System.out.println(" Insira o nome social da pessoa jurídica.\n");
+				nomeSocial = sc.next();
+				
+				
+				System.out.println("---------------------------------------\n");
+				System.out.println(" Insira o email da pessoa jurídica.\n");
+				email = sc.next();
+				
+				CNPJ newCnpj = new CNPJ();
+				cnpj = newCnpj.getCnpj();
+
+				System.out.println("---------------------------------------\n");
+				System.out.println(" Insira o telefone da pessoa jurídica.\n");
+				telefone = sc.nextInt();
+				
+			    nomeCompleto = null;
+				estadoCivil = null;
+				cpf = null;
+				
+				Locatario newPessoaFisica = new Locatario(nomeCompleto, nomeSocial, email, cpf, cnpj, telefone, estadoCivil);
+				locatario.add(newPessoaFisica);
+				
+				for(Locatario listaLocatario: locatario) {
+					System.out.println("---------------------------------------\n");
+
+					System.out.print("NOME COMPLETO:\n");
+					listaLocatario.getNomeCompleto();
+					System.out.print("NOME SOCIAL:\n");
+					listaLocatario.getNomeSocial();
+					System.out.print("EMAIL:\n");
+					listaLocatario.getEmail();
+					System.out.print("CPF:\n");
+					listaLocatario.getCpf();
+					System.out.print("CNPJ:\n");
+					listaLocatario.getCnpj();
+
+					
+				}
+				
+			}
 			
 		} 
 	
@@ -252,23 +314,22 @@ public class Locadora1 {
 
 		String marca, modelo, renavam;
 
-		int simOuNao;
+		int tipoDeCarro;
 
 		do {
 			System.out.println("                      CADASTRO DE VEÍCULOS");
 			System.out.println("-----------------------------------------------------------------------"); 
-			System.out.println(" Você quer cadastrar um veículo?\n");
-			System.out.println(" 1 - Sim");
-			System.out.println(" 2 - Não");
+			System.out.println(" Que tipo de veículo deseja registrar?\n");
+			System.out.println(" 1 - Veículo de Passeio");
+			System.out.println(" 2 - Veículo Utilitário");
+			System.out.println(" 3 - Motocicleta");
 		
-			simOuNao = sc.nextInt();
+			 tipoDeCarro = sc.nextInt();
+					
 			
-			
-			
-			
-		}while(simOuNao < 1 || simOuNao > 2);
+		}while(tipoDeCarro < 1 ||  tipoDeCarro > 3);
 
-		if(simOuNao == 1){
+		if(tipoDeCarro == 1){
 
 			System.out.println("---------------------------------------\n");
 			System.out.println(" Insira a marca.\n");
@@ -279,7 +340,7 @@ public class Locadora1 {
 			modelo = sc.next();
 			
 			System.out.println("---------------------------------------\n");
-			System.out.println(" Insira o renavam.\n");
+			System.out.println(" Insira o RENAVAM.\n");
 			renavam = sc.next();
 
 			Veiculo newVeiculo = new Veiculo(marca, modelo, renavam);
@@ -288,8 +349,12 @@ public class Locadora1 {
 			// Por fim, criamos uma classe "listaPessoa" que imprima os atributos por meio dos métodos/funções "get".
 			for(Veiculo listaVeiculo:veiculo) {
 				System.out.println("---------------------------------------\n");
+			
+				System.out.print("MARCA:\n");
 				listaVeiculo.getMarca();
+				System.out.print("MODELO:\n");
 				listaVeiculo.getModelo();
+				System.out.print("RENAVAM:\n");
 				listaVeiculo.getRenavam();
 				
 			}
