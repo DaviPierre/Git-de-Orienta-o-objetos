@@ -5,48 +5,52 @@ import java.util.Scanner;
 public class PessoaFisica extends Locatario {
 	Scanner sc = new Scanner(System.in);
 	
-	String nomeCompleto, estadoCivil;
-	int  cpf;
+	String nomeCompleto, email, estadoCivil, cpf;
+	int telefone;
 	
 	public PessoaFisica() {
 		
 	}
 	
 	// Aqui entram os dados registrados na main "Locadora1", quando "newPessoaFisica" é instanciada.
-	public PessoaFisica(String nomeCompleto, String email, int cpf, int telefone) { 
+	public PessoaFisica(String nomeCompleto, String email, String cpf, int telefone) { 
 		setNomeCompleto(nomeCompleto); 
 		setEmail(email);
+		setCpf(cpf);
+		setTelefone(telefone);
 	}
 	
 	// Função que retorna "nomeCompleto" após o registro devido nesta classe (PessoaFisica) por meio do "setNomeCompleto".
 	public String getNomeCompleto() {
-		System.out.println(nomeCompleto);
+		// System.out.println(nomeCompleto);
 		return nomeCompleto;
 	}
-	
-	
-	//Esse "this" é necessário, pois "nomeCompleto" é uma String diferente em "Locadora1" (estamos em "PessoaFisica").
-    //Essencialmente, a linha 26 pode ser traduzida como: registrando nomeCompleto de "newPessoaFisica" (da classe Locadora1)
-    //propriamente (na classe PessoaFisica).
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}    
 	
-	
-	public int getCpf() {
-		System.out.println(cpf);
-		return cpf;
-	}
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
-	}
-	
 	public String getEstadoCivil() {
-		System.out.println(estadoCivil);
+		// System.out.println(estadoCivil);
 		return estadoCivil;
 	}
 	public void setEstadoCivil(String estadoCivil) {
 		this.estadoCivil = estadoCivil;
+	}
+	
+	public String getCpf() {
+		// System.out.println(cpf);
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void listarPessoaFisica() {
+		System.out.println("Nome Completo: " + getNomeCompleto());
+		System.out.println("Email: " + getEmail());
+		System.out.println("CPF: " + getCpf());
+		System.out.println("Telefone: " + getTelefone());
+		// System.out.println("Estado Civil: " + getEstadoCivil());
 	}
 	
 	

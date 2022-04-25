@@ -19,7 +19,9 @@ public class Veiculo {
 
 	static float dVeiculoM;
 
-   
+   public Veiculo() {
+       
+   }
     
     // A partir daqui, estão todos os métodos.
     //---------------------------------------------------------------------

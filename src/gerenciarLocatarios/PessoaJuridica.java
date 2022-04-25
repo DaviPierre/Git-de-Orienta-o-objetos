@@ -1,6 +1,7 @@
 package gerenciarLocatarios;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import app.CNPJ; //Importando a classe CNPJ de outro pacote, para poder apontar corretamente e utilizar de seu método.
 import app.Endereco;
@@ -8,47 +9,70 @@ import app.Endereco;
 public class PessoaJuridica extends Locatario {
 	Scanner sc = new Scanner(System.in); 
 	
-	int numeroFuncionarios; //O número total de funcionários que a empresa vai ter.
-	String nomeSocial;
-    
-	public void cadastrarFuncionarios() {	
-		System.out.println("----------------------------------------------------------\n");
-		System.out.println(" Quantos funcionários a pessoa jurídica tem?\n");
-		numeroFuncionarios = sc.nextInt();
+	int numeroFuncionarios, telefone; //O número total de funcionários que a empresa vai ter.
+	String nomeSocial, email, cnpj;
+
+	public ArrayList<PessoaFisica> listaFuncionarios;
+
+	public PessoaJuridica() {
 		
-		PessoaFisica[] funcionarios = new PessoaFisica[numeroFuncionarios]; //Instanciando um número x de funcionários do tipo "PessoaFisica".
+	}
+
+	public PessoaJuridica(String nomeSocial, String email, String cnpj, int telefone, int numeroFuncionarios){
+		setNomeSocial(nomeSocial);
+		setEmail(email);
+		setCnpj(cnpj);
+		setTelefone(telefone);
+		setNumeroFuncionarios(numeroFuncionarios);
+		this.listaFuncionarios = new ArrayList<>(numeroFuncionarios);
+	}
+
+	public void insereFuncionario(PessoaFisica novoFuncionario) {
+		this.listaFuncionarios.add(novoFuncionario);
+	}
+
+	public String getNomeSocial() {
+		// System.out.println(nomeSocial);
+		return nomeSocial;
+	}
+	public void setNomeSocial(String nomeSocial) {
+		this.nomeSocial = nomeSocial;
+	}
+
+	public String getCnpj() {
+		// System.out.println(cnpj);
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public int getNumeroFuncionarios() {
+		// System.out.println(numeroFuncionarios);
+		return numeroFuncionarios;
+	}
+	public void setNumeroFuncionarios(int numeroFuncionarios) {
+		this.numeroFuncionarios = numeroFuncionarios;
+	}
+
+	public void listarPessoaJuridica() {
+		System.out.println("Nome Social: " + getNomeSocial());
+		System.out.println("Email: " + getEmail());
+		System.out.println("CNPJ: " + getCnpj());
+		System.out.println("Telefone: " + getTelefone());
+		System.out.println("Número de Funcionários: " + getNumeroFuncionarios());
+	}
+
+	public void listaFuncionarios(){
+		System.out.println("Lista de Funcionários: ");
+		for(PessoaFisica funcionarios:listaFuncionarios){
+			funcionarios.listarPessoaFisica();
 		}
-		// O código ainda tá inacabado, mas ilustra as relações entre PessoaFisica e PessoaJuridica.	  
-	
-    
-	public void cadastrarCnpj() { //Instanciando "cnpjEmpresa".    	
-    	CNPJ cnpjEmpresa;
-    	cnpjEmpresa = new CNPJ();
-    	cnpjEmpresa.getCnpj();	
-    }
-    
-    public String getNomeSocial() {
-    	
-    	System.out.println("-------------------------------------------------");
-    	System.out.println(" Insira o nome social da pessoa jurídica.\n");
-    	
-    	nomeSocial = sc.next();
-    	
-    	return nomeSocial;
-    }
-    
-    public void cadastrarPessoaJuridica(){
-    	Endereco enderecoPessoaJuridica;
-    	enderecoPessoaJuridica = new Endereco();
-	       
-    	enderecoPessoaJuridica.setRua();
-    	enderecoPessoaJuridica.setNumero();
-    	enderecoPessoaJuridica.setComplemento();
-    	enderecoPessoaJuridica.setBairro();
-    	enderecoPessoaJuridica.setCidade();
-    	enderecoPessoaJuridica.setEstado();
-    	enderecoPessoaJuridica.setCep();   	
-    }
-    
+	}
+
+	public String getListaFuncionarios(int i){
+		return listaFuncionarios.get(i).getNomeCompleto();
+	}
+
 }   
 

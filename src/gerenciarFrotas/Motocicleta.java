@@ -9,6 +9,10 @@ enum motoPilotagem{Cidade, Estrada, Sport, OffRoad}
    
         boolean controleTracao, freiosABS, pilotoAutomatico;
 
+        public Motocicleta() {
+            
+        }
+        
         public boolean setControleTracao(){
             boolean controleTracao = false;
             int decisao;
