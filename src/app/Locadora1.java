@@ -606,9 +606,20 @@ public class Locadora1 {
 			veiculo.add(newV_moto);
 		}
 
-		for(Veiculo listaPasseio:veiculo) {
-			// System.out.println(listaPasseio.toString());
-			System.out.println(((V_passeio) listaPasseio).getMarca() + "Deu");
+		for(Veiculo listaPasseio:veiculo) { // listagem veiculos
+			if(listaPasseio.getClass().getSimpleName().contains("V_passeio")){
+				System.out.println(((V_passeio) listaPasseio).getMarca());
+			}
+			if(listaPasseio.getClass().getSimpleName().contains("V_carga")){
+				
+			}
+			if(listaPasseio.getClass().getSimpleName().contains("V_passageiro")){
+				
+			}
+			if(listaPasseio.getClass().getSimpleName().contains("Motocicleta")){
+
+			}
+
 		}
 
 		// // Por fim, criamos uma classe "listaPessoa" que imprima os atributos por meio dos métodos/funções "get".
