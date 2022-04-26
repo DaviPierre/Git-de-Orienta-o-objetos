@@ -70,10 +70,10 @@ public class Reserva {
 	
 	public float calcValorTotal() {
 		
-		valorTotalN = Veiculo.getdVeiculoN() * numeroDiarias ;
-		valorTotalR = Veiculo.getdVeiculoR() * numeroDiarias; 
-		valorTotalE = Veiculo.getdVeiculoE() * numeroDiarias ;
-		valorTotalM = Veiculo.getdVeiculoM() * numeroDiarias ;
+		// valorTotalN = Veiculo.getdVeiculoN() * numeroDiarias ;
+		// valorTotalR = Veiculo.getdVeiculoR() * numeroDiarias; 
+		// valorTotalE = Veiculo.getdVeiculoE() * numeroDiarias ;
+		// valorTotalM = Veiculo.getdVeiculoM() * numeroDiarias ;
 		
 		
 		return valorTotalEscolhido;

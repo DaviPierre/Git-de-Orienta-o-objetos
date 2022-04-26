@@ -13,6 +13,10 @@ enum motoPilotagem{Cidade, Estrada, Sport, OffRoad}
             
         }
         
+        public Motocicleta(String marca){
+            setMarca(marca);
+        }
+        
         public boolean setControleTracao(){
             boolean controleTracao = false;
             int decisao;

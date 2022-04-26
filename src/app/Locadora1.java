@@ -5,6 +5,11 @@ import java.util.Scanner;
 import gerenciarLocatarios.Locatario;
 import gerenciarLocatarios.PessoaFisica;
 import gerenciarLocatarios.PessoaJuridica;
+import gerenciarFrotas.Motocicleta;
+import gerenciarFrotas.V_carga;
+import gerenciarFrotas.V_passageiro;
+import gerenciarFrotas.V_passeio;
+import gerenciarFrotas.V_utilitario;
 import gerenciarFrotas.Veiculo;
 
 import java.util.ArrayList; // Esse import vai servir para registrar diversos usuários, veículos e reservas
@@ -136,14 +141,8 @@ public class Locadora1 {
         			break;
         	
         		case 4:
-        			printarGerenciarLocadora();
-        			printarSaindoDoPrograma();
+							printarSaindoDoPrograma();
         		
-        			break;
-        			
-        		case 5:
-        			printarSaindoDoPrograma();
-        			
         			break;
         	
         		default:
@@ -472,12 +471,23 @@ public class Locadora1 {
 	
 	public static void cadastrarVeiculo(ArrayList<Veiculo> veiculo) {
 
+		// int i=0;
+		// while(i != 2){
+		// 	Veiculo passeio = new V_passeio("AAA" + i,"b","c",true, true, false);
+		// 	System.out.println(((V_passeio) passeio).getMarca());
+		// 	veiculo.add(passeio);
+		// 	i++;
+		// }
+
+		// for(Veiculo listaPasseio:veiculo) {
+		// 	System.out.println(((V_passeio) listaPasseio).getMarca() + "DEu");
+		// }
+
 		Scanner sc = new Scanner(System.in);
 		
 
 		String marca, modelo, renavam;
-
-		int tipoDeCarro;
+		int tipoDeCarro, anoFabricacao, anoModelo, capacidadeTanque;
 
 		do {
 			System.out.println("                      CADASTRO DE VEÍCULOS");
@@ -492,37 +502,126 @@ public class Locadora1 {
 			
 		}while(tipoDeCarro < 1 ||  tipoDeCarro > 3);
 
-		if(tipoDeCarro == 1){
+		System.out.println("---------------------------------------\n");
+		System.out.println(" Insira a marca.\n");
+		marca = sc.next();
+		
+		System.out.println("---------------------------------------\n");
+		System.out.println(" Insira o modelo.\n");
+		modelo = sc.next();
 
-			System.out.println("---------------------------------------\n");
-			System.out.println(" Insira a marca.\n");
-			marca = sc.next();
-			
-			System.out.println("---------------------------------------\n");
-			System.out.println(" Insira o modelo.\n");
-			modelo = sc.next();
-			
-			System.out.println("---------------------------------------\n");
-			System.out.println(" Insira o RENAVAM.\n");
-			renavam = sc.next();
+		System.out.println("---------------------------------------\n");
+		System.out.println(" Insira o ano de fabricação.\n");
+		anoFabricacao = sc.nextInt();
 
-			Veiculo newVeiculo = new Veiculo(marca, modelo, renavam);
-			veiculo.add(newVeiculo);
+		System.out.println("---------------------------------------\n");
+		System.out.println(" Insira o ano do modelo.\n");
+		anoModelo = sc.nextInt();
+
+		System.out.println("---------------------------------------\n");
+		System.out.println(" Insira o RENAVAM.\n");
+		renavam = sc.next();
+		
+		System.out.println("---------------------------------------\n");
+		System.out.println(" Insira a capacidade do tanque(L).\n");
+		capacidadeTanque = sc.nextInt();
+
+		if(tipoDeCarro == 1){ // Veiculo Passeio
+
+		boolean arCondicionado, direcaoHidraulica, cambioAutomatico;
+
+		System.out.println("---------------------------------------\n");
+		System.out.println("Possui ar condicionado? (S/N)\n");
+		char lerString = sc.next().charAt(0);
+		if(lerString == 'S' || lerString == 's'){
+			arCondicionado = true;
+		} else {
+			arCondicionado = false;
+		}
+
+		System.out.println("---------------------------------------\n");
+		System.out.println("Possui direção hidráulica? (S/N)\n");
+		lerString = sc.next().charAt(0);
+		if(lerString == 'S' || lerString == 's'){
+			direcaoHidraulica = true;
+		} else {
+			direcaoHidraulica = false;
+		}
+
+		System.out.println("---------------------------------------\n");
+		System.out.println("Possui câmbio automático? (S/N)\n");
+		lerString = sc.next().charAt(0);
+		if(lerString == 'S' || lerString == 's'){
+			cambioAutomatico = true;
+		} else {
+			cambioAutomatico = false;
+		}
+
+
+			Veiculo newV_passeio = new V_passeio(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque, arCondicionado, direcaoHidraulica, cambioAutomatico);
+			veiculo.add(newV_passeio);
 			
-			// Por fim, criamos uma classe "listaPessoa" que imprima os atributos por meio dos métodos/funções "get".
-			for(Veiculo listaVeiculo:veiculo) {
-				System.out.println("---------------------------------------\n");
+		}
+
+		if(tipoDeCarro == 2){ // Veiculo Utilitario
+			int tipoDeUtilitario;
+			int maxPeso, taraVeiculo, tamCargaLitros;
+			int maxOcupantes;
+			boolean arCondicionado, direcaoHidraulica, tv;
+
+			enum categoriaCarga {
+				Bau,
+				Graneleiro,
+				Basculante
+			}
+
+			do {
+				System.out.println("                      CADASTRO DE VEÍCULOS");
+				System.out.println("-----------------------------------------------------------------------"); 
+				System.out.println(" Que tipo de veículo deseja registrar?\n");
+				System.out.println(" 1 - Veículo de carga");
+				System.out.println(" 2 - Veículo de passageiro");
 			
-				System.out.print("MARCA:\n");
-				listaVeiculo.getMarca();
-				System.out.print("MODELO:\n");
-				listaVeiculo.getModelo();
-				System.out.print("RENAVAM:\n");
-				listaVeiculo.getRenavam();
+				tipoDeUtilitario = sc.nextInt();
 				
+			}while(tipoDeUtilitario < 1 ||  tipoDeUtilitario > 2);
+
+			if(tipoDeUtilitario == 1){ //Veiculo de carga
+				System.out.println("Cadastro de veículo de carga");
+				Veiculo newV_carga = new V_carga();
+				veiculo.add(newV_carga);
 			}
-			
+
+			if(tipoDeUtilitario == 2){ //Veiculo de passageiro
+				System.out.println("Cadastro de veículo de passageiro");
+				Veiculo newV_passageiro = new V_passageiro();
+				veiculo.add(newV_passageiro);
 			}
+
+		}
+
+		if(tipoDeCarro == 3){
+			System.out.println("Cadastro moto");
+			Veiculo newV_moto = new Motocicleta(marca);
+			veiculo.add(newV_moto);
+		}
+
+		for(Veiculo listaPasseio:veiculo) {
+			// System.out.println(listaPasseio.toString());
+			System.out.println(((V_passeio) listaPasseio).getMarca() + "Deu");
+		}
+
+		// // Por fim, criamos uma classe "listaPessoa" que imprima os atributos por meio dos métodos/funções "get".
+		// for(Veiculo listaVeiculo:veiculo) {
+		// 	System.out.println("---------------------------------------\n");
+		
+		// 	System.out.print("MARCA:\n");
+		// 	listaVeiculo.getMarca();
+		// 	System.out.print("MODELO:\n");
+		// 	listaVeiculo.getModelo();
+		// 	System.out.print("RENAVAM:\n");
+		// 	listaVeiculo.getRenavam();
+		// 	}
 		}
 
 

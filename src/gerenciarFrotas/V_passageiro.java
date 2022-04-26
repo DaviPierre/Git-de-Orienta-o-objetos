@@ -16,7 +16,7 @@ public class V_passageiro extends V_utilitario{
         maxOcupantes = sc.nextInt();
         
         // capacidadeCarga recebe maxOcupantes se o veículo utilitário for classificado como veículo de passageiro.
-        capacidadeCarga = maxOcupantes;
+        // capacidadeCarga = maxOcupantes;
         
         return maxOcupantes;
         

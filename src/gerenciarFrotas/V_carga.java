@@ -61,7 +61,7 @@ public class V_carga extends V_utilitario {
         maxPeso = sc.nextInt();
         
      //capacidadeCarga recebe maxPeso se o veículo utilitário for classificado como veículo de cargo.
-        capacidadeCarga = maxPeso;
+        // capacidadeCarga = maxPeso;
 
         return maxPeso;
         
