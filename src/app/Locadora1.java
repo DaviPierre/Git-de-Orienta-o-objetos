@@ -80,13 +80,17 @@ public class Locadora1 {
 									System.out.println("-----------------------------------------------------------------------"); 
 									System.out.println(" 1 - Busca por Nome.\n");
 									System.out.println(" 2 - Busca por Numero do documento(cpf/cnpj).\n");
+									System.out.println(" 2 - Busca por email.\n");
 									selec = sc.nextInt();
-								}while(selec < 1 || selec > 2);
+								}while(selec < 1 || selec > 3);
 								if(selec==1){
 									buscaLocatarioNome(pessoaJuridica, pessoaFisica, sc);
 								}
 								if(selec==2){
-
+									buscaLocatarioCPF_CNPJ(pessoaJuridica, pessoaFisica, sc);
+								}
+								if(selec==3){
+									buscaLocatarioEmail(pessoaJuridica, pessoaFisica, sc);
 								}
 							}
 
@@ -117,7 +121,6 @@ public class Locadora1 {
         		
         					 case 2:
         					 	printarPesquisarVeiculos();
-        					 	printarSaindoDoPrograma();
         					 	break;
        					
         					 case 3:                          	
@@ -149,9 +152,10 @@ public class Locadora1 {
         			printarCasoDefault();
         		break;
 			 }   
-		}while(sel1 != 5);
+		}while(sel1 != 4);
 	}
 	
+	//----------------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	//Funções de printar.
 	
@@ -229,6 +233,9 @@ public class Locadora1 {
 		System.out.println("Saindo do programa...");   
 	}
 
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	// Funções de Cadastro
 	public static void cadastroPessoaFisica(ArrayList<PessoaFisica> pessoaFisica) {
 		Scanner sc = new Scanner(System.in);
 
@@ -240,139 +247,7 @@ public class Locadora1 {
 			listaPessoaFisica.listarPessoaFisica();
 		}
 	}
-
-	public static int buscaLocatarioNome(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
-		boolean encontrou = false;
-		String buscaNome;
-		System.out.println("Insira o nome do locatário que deseja buscar: ");
-		buscaNome = sc.next();
-
-		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
-			if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
-				System.out.println(pessoaFisica.get(i).getEmail());
-				encontrou=true;
-				return i;
-			}
-		}
-		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
-			if(pessoaJuridica.get(i).getNomeSocial().contains(buscaNome)){
-				System.out.println(pessoaJuridica.get(i).getEmail());
-				encontrou=true;
-				return i;
-			}
-		}
-
-		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
-			// System.out.println(pessoaJuridica.size() + "SIZEEEEE");
-			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
-				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
-					System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
-					encontrou=true;
-					return i;
-				}
-			}
-		}
-
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
-		}
-		return -1;
-	}
-
-	public static void alterarDadosLocatario(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
-		boolean encontrou = false;
-		String buscaNome;
-		System.out.println("Insira o nome do locatário que deseja alterar: ");
-		buscaNome = sc.next();
-		
-		System.out.println("O que deseja alterar?\n1-Nome\n2-Email\n3-CPF/CNPJ\n4-Telefone\n");
-		int opcao = sc.nextInt();
-
-		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
-			if(opcao == 1){
-				if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
-					encontrou=true;
-					pessoaFisica.get(i).setNomeCompleto(lerNome(sc));
-					System.out.println(pessoaFisica.get(i).getNomeCompleto());
-				}
-			} else {
-				System.out.println("Não implementado ainda");
-			}
-
-
-		}
-		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
-			// System.out.println("O que deseja alterar?\n1-Nome\n2-Email\n3-CNPJ\n4-Telefone\n");
-			// int opcao = sc.nextInt();
-			if(opcao == 1){
-				if(pessoaJuridica.get(i).getNomeSocial().contains(buscaNome)){
-					encontrou=true;
-					pessoaJuridica.get(i).setNomeSocial(lerNome(sc));
-					System.out.println(pessoaJuridica.get(i).getNomeSocial());
-				}
-			} else {
-				System.out.println("Não implementado ainda");
-			}
-		}
-
-		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
-			// System.out.println("O que deseja alterar?\n1-Nome\n2-Email\n3-CPF\n4-Telefone\n");
-			// int opcao = sc.nextInt();
-			if(opcao == 1){
-				for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
-					if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
-						encontrou=true;
-						pessoaJuridica.get(i).listaFuncionarios.get(j).setNomeCompleto(lerNome(sc));
-						System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
-					}
-				}
-			} else {
-				System.out.println("Não implementado ainda");
-			}
-		}
-
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
-		}
-	}
-
-	public static void deletarLocatarioNome(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
-		boolean encontrou = false;
-		String buscaNome;
-		System.out.println("Insira o nome do locatário que deseja deletar: ");
-		buscaNome = sc.next();
-
-		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
-			if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
-				System.out.println(pessoaFisica.remove(i));
-				encontrou=true;
-			}
-		}
-
-		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
-			if(pessoaJuridica.get(i).getNomeSocial().contains(buscaNome)){
-				System.out.println(pessoaJuridica.remove(i));
-				encontrou=true;
-			}
-		}
-			
-		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
-			// System.out.println(pessoaJuridica.size() + "SIZEEEEE");
-			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
-				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
-					// System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.remove(j));
-					encontrou=true;
-				}
-			}
-		}
-
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
-		}
-	}
-
+	
 	public static void cadastroPessoaJuridica(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica) {
 		Scanner sc = new Scanner(System.in);
 
@@ -422,51 +297,6 @@ public class Locadora1 {
 		} while(novoCadastro == true);
 
 		newPessoaJuridica.listaFuncionarios();
-	}
-	
-	 static String lerNome(Scanner sc){
-		String nome;
-		System.out.println("---------------------------------------\n");
-		System.out.println("Insira o nome completo da pessoa fisica\n");
-		nome = sc.next();
-
-		return nome;
-	}
-
-	static String lerEmail(Scanner sc){
-		String email;
-		System.out.println("---------------------------------------\n");
-		System.out.println("Insira o email da pessoa fisica\n");
-		email = sc.next();
-
-		return email;
-	}
-
-	String lerEstadoCivil(Scanner sc){
-		String estadoCivil;
-		System.out.println("---------------------------------------\n");
-		System.out.println("Insira o estado civil da pessoa fisica\n");
-		estadoCivil = sc.next();
-
-		return estadoCivil;
-	}
-
-	static String lerCpf(Scanner sc){
-		String cpf;
-		System.out.println("---------------------------------------\n");
-		System.out.println("Insira o cpf da pessoa fisica\n");
-		cpf = sc.next();
-
-		return cpf;
-	}
-
-	static int lerTelefone(Scanner sc){
-		int telefone;
-		System.out.println("---------------------------------------\n");
-		System.out.println("Insira o telefone da pessoa fisica\n");
-		telefone = sc.nextInt();
-
-		return telefone;
 	}
 	
 	public static void cadastrarVeiculo(ArrayList<Veiculo> veiculo) {
@@ -634,9 +464,355 @@ public class Locadora1 {
 		// 	listaVeiculo.getRenavam();
 		// 	}
 		}
+	
+	
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	// Funções de Search
+
+	public static int buscaLocatarioNome(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
+		boolean encontrou = false;
+		String buscaNome;
+		System.out.println("Insira o nome do locatário que deseja buscar: ");
+		buscaNome = sc.next();
+
+		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
+			if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
+				System.out.println(pessoaFisica.get(i).getNomeCompleto());
+				System.out.println(pessoaFisica.get(i).getEmail());
+				System.out.println(pessoaFisica.get(i).getCpf());
+				encontrou=true;
+				return i;
+			}
+		}
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
+			if(pessoaJuridica.get(i).getNomeSocial().contains(buscaNome)){
+				System.out.println(pessoaJuridica.get(i).getNomeSocial());
+				System.out.println(pessoaJuridica.get(i).getEmail());
+				System.out.println(pessoaJuridica.get(i).getCnpj());
+				encontrou=true;
+				return i;
+			}
+		}
+
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
+			// System.out.println(pessoaJuridica.size() + "SIZEEEEE");
+			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
+					System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
+					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
+					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
+					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
+					encontrou=true;
+					return i;
+				}
+			}
+		}
+
+		if(!encontrou){
+			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
+		}
+		return -1;
+	}
+
+	public static int buscaLocatarioCPF_CNPJ(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
+		boolean encontrou = false;
+		String buscaDoc;
+		System.out.println("Insira o CNPJ ou CPF do locatário que deseja buscar: ");
+		buscaDoc = sc.next();
+
+		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca CPF pessoa fisica
+			if(pessoaFisica.get(i).getCpf().contains(buscaDoc)){
+				System.out.println(pessoaFisica.get(i).getNomeCompleto());
+				System.out.println(pessoaFisica.get(i).getEmail());
+				System.out.println(pessoaFisica.get(i).getCpf());
+				encontrou=true;
+				return i;
+			}
+		}
+
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca CNPJ pessoa juridica
+			if(pessoaJuridica.get(i).getCnpj().contains(buscaDoc)){
+				System.out.println(pessoaJuridica.get(i).getNomeSocial());
+				System.out.println(pessoaJuridica.get(i).getEmail());
+				System.out.println(pessoaJuridica.get(i).getCnpj());
+				encontrou=true;
+				return i;
+			}
+		}
 
 
-				
+		if(!encontrou){
+			System.out.println("Não foi encontrado nenhum locatário com esse CPF ou CNPJ.");
+		}
+		return -1;
+	}
+
+	public static int buscaLocatarioEmail(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
+		boolean encontrou = false;
+		String buscaEmail;
+		System.out.println("Insira o email do locatário que deseja buscar: ");
+		buscaEmail = sc.next();
+
+		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
+			if(pessoaFisica.get(i).getEmail().contains(buscaEmail)){
+				System.out.println(pessoaFisica.get(i).getNomeCompleto());
+				System.out.println(pessoaFisica.get(i).getEmail());
+				System.out.println(pessoaFisica.get(i).getCpf());
+				encontrou=true;
+				return i;
+			}
+		}
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
+			if(pessoaJuridica.get(i).getEmail().contains(buscaEmail)){
+				System.out.println(pessoaJuridica.get(i).getNomeSocial());
+				System.out.println(pessoaJuridica.get(i).getEmail());
+				System.out.println(pessoaJuridica.get(i).getCnpj());
+				encontrou=true;
+				return i;
+			}
+		}
+
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
+			// System.out.println(pessoaJuridica.size() + "SIZEEEEE");
+			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaEmail)){
+					System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
+					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
+					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
+					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
+					encontrou=true;
+					return i;
+				}
+			}
+		}
+
+		if(!encontrou){
+			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
+		}
+		return -1;
+	}
+
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	// Funções de Alteração
+	
+	public static void alterarDadosLocatario(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
+		
+		boolean encontrou = false;
+		String buscaNome = null;
+		
+		System.out.println("Insira o nome do locatário que deseja alterar: ");
+		buscaNome = sc.next();
+	
+		System.out.println("O que deseja alterar?\n1-Nome\n2-Email\n3-CPF/CNPJ\n4-Telefone\n");
+		int opcao = sc.nextInt();
+
+		
+		
+		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
+			if(opcao == 1){
+				if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
+					encontrou=true;
+					pessoaFisica.get(i).setNomeCompleto(lerNome(sc));
+					System.out.println(pessoaFisica.get(i).getNomeCompleto());
+				}
+			}
+			if(opcao == 2){
+				if(pessoaFisica.get(i).getEmail().contains(buscaNome)){
+					encontrou=true;
+					pessoaFisica.get(i).setEmail(lerEmail(sc));
+					System.out.println(pessoaFisica.get(i).getEmail());
+				}
+			}
+			if(opcao == 3){
+				if(pessoaFisica.get(i).getCpf().contains(buscaNome)){
+					encontrou=true;
+					pessoaFisica.get(i).setCpf(lerCpf(sc));
+					System.out.println(pessoaFisica.get(i).getCpf());
+				}
+			}
+			if(opcao == 4){
+				if(pessoaFisica.get(i).getTelefone().contains(buscaNome)){
+					encontrou=true;
+					pessoaFisica.get(i).setTelefone(lerTelefone(sc));
+					System.out.println(pessoaFisica.get(i).getTelefone());
+				}
+		    }	
+			
+		}
+		
+		for (int k = 0; k < pessoaJuridica.size(); k++) { // Busca nome pessoa juridica
+			// System.out.println("O que deseja alterar?\n1-Nome\n2-Email\n3-CNPJ\n4-Telefone\n");
+			// int opcao = sc.nextInt();
+			if(opcao == 1){
+				if(pessoaJuridica.get(k).getNomeSocial().contains(buscaNome)){
+					encontrou=true;
+					pessoaJuridica.get(k).setNomeSocial(lerNome(sc));
+					System.out.println(pessoaJuridica.get(k).getNomeSocial());
+				}
+			}
+			if(opcao == 2){
+				if(pessoaJuridica.get(k).getEmail().contains(buscaNome)){
+					encontrou=true;
+					pessoaJuridica.get(k).setEmail(lerEmail(sc));
+					System.out.println(pessoaJuridica.get(k).getEmail());
+				}
+				}
+			if(opcao == 3){
+				if(pessoaJuridica.get(k).getCnpj().contains(buscaNome)){
+					encontrou=true;
+					pessoaJuridica.get(k).setCnpj(lerCnpj(sc));
+					System.out.println(pessoaJuridica.get(k).getCnpj());
+				}
+    		}
+			
+			if(opcao == 4){
+				if(pessoaJuridica.get(k).getTelefone().contains(buscaNome)){
+					encontrou=true;
+					pessoaJuridica.get(k).setTelefone(lerTelefone(sc));
+					System.out.println(pessoaJuridica.get(k).getTelefone());
+				}
+			}
+		
+
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
+			// System.out.println("O que deseja alterar?\n1-Nome\n2-Email\n3-CPF\n4-Telefone\n");
+			// int opcao = sc.nextInt();
+			if(opcao == 1){
+				for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+					if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
+						encontrou=true;
+						pessoaJuridica.get(i).listaFuncionarios.get(j).setNomeCompleto(lerNome(sc));
+						System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
+					}
+				}
+			}
+			if(opcao == 2){
+				if(pessoaFisica.get(i).getEmail().contains(buscaNome)){
+					encontrou=true;
+					pessoaFisica.get(i).setEmail(lerEmail(sc));
+					System.out.println(pessoaFisica.get(i).getEmail());
+				}
+			}
+			if(opcao == 3){
+				if(pessoaFisica.get(i).getCpf().contains(buscaNome)){
+					encontrou=true;
+					pessoaFisica.get(i).setCpf(lerCpf(sc));
+					System.out.println(pessoaFisica.get(i).getCpf());
+				}
+			}
+			if(opcao == 4){
+				if(pessoaFisica.get(i).getTelefone().contains(buscaNome)){
+				encontrou=true;
+					pessoaFisica.get(i).setTelefone(lerTelefone(sc));
+					System.out.println(pessoaFisica.get(i).getTelefone());
+				}
+             }
+			}			
+		}
+		
+		if(!encontrou){
+			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
+		}
+			
+	}
+
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	// Funções de Deletar
+	public static void deletarLocatarioNome(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
+		boolean encontrou = false;
+		String buscaNome;
+		System.out.println("Insira o nome do locatário que deseja deletar: ");
+		buscaNome = sc.next();
+
+		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
+			if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
+				System.out.println(pessoaFisica.remove(i));
+				encontrou=true;
+			}
+		}
+
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
+			if(pessoaJuridica.get(i).getNomeSocial().contains(buscaNome)){
+				System.out.println(pessoaJuridica.remove(i));
+				encontrou=true;
+			}
+		}
+			
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
+			// System.out.println(pessoaJuridica.size() + "SIZEEEEE");
+			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
+					// System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
+					System.out.println(pessoaJuridica.get(i).listaFuncionarios.remove(j));
+					encontrou=true;
+				}
+			}
+		}
+
+		if(!encontrou){
+			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
+		}
+	}
+
+	
+	 static String lerNome(Scanner sc){
+		String nome;
+		System.out.println("---------------------------------------\n");
+		System.out.println("Insira o nome completo da pessoa fisica\n");
+		nome = sc.next();
+
+		return nome;
+	}
+
+	static String lerEmail(Scanner sc){
+		String email;
+		System.out.println("---------------------------------------\n");
+		System.out.println("Insira o email da pessoa fisica\n");
+		email = sc.next();
+
+		return email;
+	}
+
+	String lerEstadoCivil(Scanner sc){
+		String estadoCivil;
+		System.out.println("---------------------------------------\n");
+		System.out.println("Insira o estado civil da pessoa fisica\n");
+		estadoCivil = sc.next();
+
+		return estadoCivil;
+	}
+
+	static String lerCpf(Scanner sc){
+		String cpf;
+		System.out.println("---------------------------------------\n");
+		System.out.println("Insira o cpf da pessoa fisica\n");
+		cpf = sc.next();
+
+		return cpf;
+	}
+	
+	private static String lerCnpj(Scanner sc) {
+		String cnpj;
+		System.out.println("---------------------------------------\n");
+		System.out.println("Insira o cnpj da pessoa jurídica\n");
+		cnpj = sc.next();
+
+		return cnpj;
+	}
+
+	static String lerTelefone(Scanner sc){
+		String telefone;
+		System.out.println("---------------------------------------\n");
+		System.out.println("Insira o telefone da pessoa fisica\n");
+		telefone = sc.next();
+
+		return telefone;
+	}
+	
+	
 	
 	public void editarLocatarios() {
 		
