@@ -9,8 +9,8 @@ import app.Endereco;
 public class PessoaJuridica extends Locatario {
 	Scanner sc = new Scanner(System.in); 
 	
-	int numeroFuncionarios, telefone; //O número total de funcionários que a empresa vai ter.
-	String nomeSocial, email, cnpj;
+	int numeroFuncionarios; //O número total de funcionários que a empresa vai ter.
+	String nomeSocial, email, cnpj, telefone;
 
 	public ArrayList<PessoaFisica> listaFuncionarios;
 
@@ -18,7 +18,7 @@ public class PessoaJuridica extends Locatario {
 		
 	}
 
-	public PessoaJuridica(String nomeSocial, String email, String cnpj, int telefone, int numeroFuncionarios){
+	public PessoaJuridica(String nomeSocial, String email, String cnpj, String telefone, int numeroFuncionarios){
 		setNomeSocial(nomeSocial);
 		setEmail(email);
 		setCnpj(cnpj);

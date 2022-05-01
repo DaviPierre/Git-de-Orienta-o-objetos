@@ -251,8 +251,8 @@ public class Locadora1 {
 	public static void cadastroPessoaJuridica(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica) {
 		Scanner sc = new Scanner(System.in);
 
-		String email, nomeSocial, cnpj;
-		int telefone, numeroFuncionarios;
+		String email, nomeSocial, cnpj, telefone;
+		int numeroFuncionarios;
 
 		System.out.println("---------------------------------------\n");
 		System.out.println(" Insira o nome social da empresa.\n");
@@ -267,7 +267,7 @@ public class Locadora1 {
 
 		System.out.println("---------------------------------------\n");
 		System.out.println(" Insira o telefone da empresa.\n");
-		telefone = sc.nextInt();
+		telefone = sc.next();
 
 		System.out.println("---------------------------------------\n");
 		System.out.println(" Insira o número de funcionários da empresa.\n");
