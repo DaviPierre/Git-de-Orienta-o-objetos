@@ -18,7 +18,7 @@ public class PessoaJuridica extends Locatario {
 		
 	}
 
-	public PessoaJuridica(String nomeSocial, String email, String cnpj, int telefone, int numeroFuncionarios){
+	public PessoaJuridica(String nomeSocial, String email, String cnpj, String telefone, int numeroFuncionarios){
 		setNomeSocial(nomeSocial);
 		setEmail(email);
 		setCnpj(cnpj);
