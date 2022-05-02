@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class PessoaFisica extends Locatario {
 	Scanner sc = new Scanner(System.in);
 	
-	String nomeCompleto, email, estadoCivil, cpf;
-	int telefone;
+	String nomeCompleto, email, estadoCivil, cpf, telefone;
+
 	
 	public PessoaFisica() {
 		
 	}
 	
 	// Aqui entram os dados registrados na main "Locadora1", quando "newPessoaFisica" é instanciada.
-	public PessoaFisica(String nomeCompleto, String email, String cpf, int telefone) { 
+	public PessoaFisica(String nomeCompleto, String email, String cpf, String telefone) { 
 		setNomeCompleto(nomeCompleto); 
 		setEmail(email);
 		setCpf(cpf);
