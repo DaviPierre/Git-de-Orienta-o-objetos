@@ -27,6 +27,9 @@ public class V_passeio extends Veiculo {
 		setDirecaoHidraulica(direcaoHidraulica);
 		setCambioAutomatico(cambioAutomatico);
     setDiariaN(valoresDiarias[0]);
+    setDiariaR(valoresDiarias[1]);
+    setDiariaE(valoresDiarias[2]);
+    setValorMensal(valoresDiarias[3]);
     // valoresAluguel.setDiariaN(valoresDiarias[0]);
     // valoresAluguel.setDiariaR(valoresDiarias[1]);
     // valoresAluguel.setDiariaE(valoresDiarias[2]);

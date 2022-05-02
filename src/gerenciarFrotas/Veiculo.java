@@ -26,12 +26,40 @@ public class Veiculo {
         setAnoModelo(anoModelo);
         setCapacidadeTanque(capacidadeTanque);
         setDiariaN(diariaN);
+        setDiariaR(diariaR);
+        setDiariaE(diariaE);
+        setValorMensal(valorMensal);
     }
 
 
     public void setDiariaN(float diariaN) {
         this.diariaN = diariaN;
     }
+    public float getDiariaN() {
+        return diariaN;
+    }
+
+    public void setDiariaR(float diariaR) {
+        this.diariaR = diariaR;
+    }
+    public float getDiariaR() {
+        return diariaR;
+    }
+
+    public void setDiariaE(float diariaE) {
+        this.diariaE = diariaE;
+    }
+    public float getDiariaE() {
+        return diariaE;
+    }
+
+    public void setValorMensal(float valorMensal) {
+        this.valorMensal = valorMensal;
+    }
+    public float getValorMensal() {
+        return valorMensal;
+    }
+
 
     public void setMarca(String marca) {
 		this.marca = marca;
@@ -73,10 +101,6 @@ public class Veiculo {
     }
     public int getCapacidadeTanque() {
         return capacidadeTanque;
-    }
-
-    public float getDiariaN(){
-        return diariaN;
     }
 
 

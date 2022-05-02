@@ -161,15 +161,14 @@ public class Locadora1 {
 											System.out.println("Modelo: " + veiculo.get(i).getModelo());
 											System.out.println("Ano fabricação: " + veiculo.get(i).getAnoFabricacao());
 											System.out.println("----------------------------------------\n");
-
-											System.out.println("Selecione o veiculo desejado: \n");
-											int selecVeiculo = sc.nextInt();
-
-											veiculoReserva = veiculo.get(selecVeiculo-1);
-											findVeiculo = true;
 										}
+										System.out.println("Selecione o numero do veiculo desejado: \n");
+										int selecVeiculo = sc.nextInt();
+										
+										veiculoReserva = veiculo.get(selecVeiculo-1);
+										findVeiculo = true;
 
-									System.out.println("Escreva o nome do locatario para reserva: \n");
+									System.out.println("Escreva o nome do locatario cadastrado no sistema para reserva: \n");
 									String nomeLocatario = sc.next();
 
 									for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
@@ -202,23 +201,34 @@ public class Locadora1 {
 									System.out.println("Digite a data de fim da reserva: \n");
 									String horarioFimReserva = getData(sc);
 
+
+
 										if(findVeiculo == true && findLocatario == true){
-											Reserva newReserva = new Reserva(veiculoReserva, locatarioReserva, qntDiasLocacao, horarioInicioReserva, horarioFimReserva, reserva.size());
+											Reserva newReserva = new Reserva(veiculoReserva, locatarioReserva, qntDiasLocacao, horarioInicioReserva, horarioFimReserva, reserva.size()+1);
 											reserva.add(newReserva);
 										}
 
-										System.out.println(reserva.size()+" TAMANHOOO");
-										for (int i = 0; i < reserva.size(); i++) {
-											System.out.println(reserva.get(i).getNumeroDiarias());
-											reserva.get(i).emitirRelatorioConsolidado();
-										}
+										// for (int i = 0; i < reserva.size(); i++) {
+										// 	System.out.println(reserva.get(i).getNumeroDiarias());
+										// 	reserva.get(i).emitirRelatorioConsolidado();
+										// }
 										// Reserva newReserva = new Reserva(, , 123, 234, 345);
 									break;
 
 									case 2:
+									System.out.println("RELATORIO INDIVIDUAL");
+									for (int i = 0; i < reserva.size(); i++) {
+										System.out.println(reserva.get(i).getNumeroDiarias());
+										reserva.get(i).emitirRelatorioSeparado();
+									}
 									break;
 									
 									case 3:
+									System.out.println("RELATORIO CONSOLIDADO");
+										for (int i = 0; i < reserva.size(); i++) {
+											System.out.println(reserva.get(i).getNumeroDiarias());
+											reserva.get(i).emitirRelatorioConsolidado();
+										}
 									break;
 
 									default:
@@ -582,7 +592,8 @@ public class Locadora1 {
 
 			if(tipoDeUtilitario == 1){ //Veiculo de carga
 				System.out.println("Cadastrando veículo de carga...");
-				Veiculo newV_carga = new V_carga(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque);
+				float[] valoresDiarias = setValoresDiarias(sc);
+				Veiculo newV_carga = new V_carga(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque, valoresDiarias);
 				
 				CampoEmBrancoException verificarException = new CampoEmBrancoException(newV_carga.getMarca());
 				
@@ -605,7 +616,8 @@ public class Locadora1 {
 
 			if(tipoDeUtilitario == 2){ //Veiculo de passageiro
 				System.out.println("Cadastrando veículo de passageiro...\n");
-				Veiculo newV_passageiro = new V_passageiro(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque);
+				float[] valoresDiarias = setValoresDiarias(sc);
+				Veiculo newV_passageiro = new V_passageiro(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque,valoresDiarias);
 				
 				CampoEmBrancoException verificarException = new CampoEmBrancoException(newV_passageiro.getMarca());
 				
@@ -629,7 +641,8 @@ public class Locadora1 {
 
 		if(tipoDeCarro == 3){
 			System.out.println("Cadastrando moto...\n");
-			Veiculo newV_moto = new Motocicleta(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque);
+			float[] valoresDiarias = setValoresDiarias(sc);
+			Veiculo newV_moto = new Motocicleta(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque,valoresDiarias);
 			
 			CampoEmBrancoException verificarException = new CampoEmBrancoException(newV_moto.getMarca());
 			
