@@ -12,8 +12,8 @@ public V_utilitario() {
 
 public V_utilitario(String marca, String modelo, String renavam) {
 	setMarca(marca);
-	// setModelo(modelo);
-	// setRenavam(renavam);
+	setModelo(modelo);
+	setRenavam(renavam);
 }
 
 	public void setMarca(String marca) {
