@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class Locatario {
  static Scanner sc = new Scanner(System.in);
 	
-   int telefone;
-   String email; 
+   String email, telefone; 
    
  
   //----------------------------------------------------------------------------------
@@ -18,15 +17,15 @@ public class Locatario {
 	   
    }
    
-   public Locatario( String email, int telefone) {
+   public Locatario( String email, String telefone) {
 	  
    }
    
 	
- 	public void setTelefone(int telefone) {
+ 	public void setTelefone(String telefone) {
  		this.telefone = telefone;
  	}
-	 public int getTelefone() {
+	 public String getTelefone() {
 			//  System.out.println(telefone);
 			 return telefone;
 		}
