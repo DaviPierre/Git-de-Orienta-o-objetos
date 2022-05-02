@@ -13,7 +13,7 @@ public class CNPJ {
 	public String getCnpj() {
 		
 		System.out.println("-------------------------------------");
-		System.out.println(" Por favor, digite o CNPJ desejado.\n");
+		System.out.println(" Digite o CNPJ da empresa.\n");
 		valorCnpj = sc.next();
 		
 		return valorCnpj;
