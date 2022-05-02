@@ -67,6 +67,11 @@ public class Veiculo {
         return capacidadeTanque;
     }
 
+	public String getVeiculo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 
