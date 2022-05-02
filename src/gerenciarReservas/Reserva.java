@@ -5,6 +5,8 @@ import java.util.Scanner;
 import gerenciarFrotas.Veiculo; // Esse imports são necessários para realizar as referências.
 
 import gerenciarLocatarios.Locatario;
+import gerenciarLocatarios.PessoaFisica;
+import gerenciarLocatarios.PessoaJuridica;
 
 enum tipoReserva {
 	Normal, Reduzida, Empresarial, Mensal
@@ -18,12 +20,48 @@ public class Reserva {
 	// Referência da Classe Locatário que vai apontar pra uma pessoa, física ou jurídica, que faz a reserva.
 	Locatario pessoaReserva;
 	// O código completo vai pegar os lugares pra onde essas referências apontam pra poder associar um "Locatario" e um "Veiculo" em uma reserva.
-	int numeroDiarias, horarioInicioReserva, numeroIdentificador;
+	int numeroDiarias, numeroIdentificador;
+	String horarioInicioReserva, horarioFimReserva;
 	float valorTotalN, valorTotalR, valorTotalE, valorTotalM, valorTotalEscolhido;
 	
 	ValoresAdicionais impostos; //Aqui a referência impostos puxa da Classe ValoresAdicionais pra, no código, poder aplicar.
 	
 	static String[] tipoReserva = {"Normal", "Reduzida", "Empresarial", "Mensal"};
+
+	public Reserva(){
+
+	}
+
+	public Reserva(Veiculo veiculoReservado, Locatario pessoaReserva, int numeroDiarias, String horarioInicioReserva, String horarioFimReserva, int numeroIdentificador) {
+		this.veiculoReservado = veiculoReservado;
+		this.pessoaReserva = pessoaReserva;
+		this.numeroDiarias = numeroDiarias;
+		this.horarioInicioReserva = horarioInicioReserva;
+		this.numeroIdentificador = numeroIdentificador;
+	}
+
+	public int getNumeroDiarias() {
+		return numeroDiarias;
+	}
+
+	public void emitirRelatorioConsolidado(){
+		System.out.println("-------------------------------------");
+		System.out.println("Reserva: " + numeroIdentificador);
+		System.out.println("Inicio: " + horarioInicioReserva);
+		System.out.println("Fim: " + horarioFimReserva);
+		System.out.println(" Veículo: " + "Marca - " + veiculoReservado.getMarca() + "Modelo - " + veiculoReservado.getModelo());
+		System.out.println("Valor seguro terceiros: " + ((Veiculo) veiculoReservado).getDiariaN() + "R$");
+		// System.out.println("Valor seguro proprio: " + veiculoReservado.getValorSeguroProprio());
+		// System.out.println("Valor impostos: " + impostos.getValorImpostos());
+		System.out.println("Valor total: " + valorTotalEscolhido);
+
+		// System.out.println(" Locatário: " + ((PessoaFisica) pessoaReserva).getNomeCompleto());
+		// System.out.println(" Locatário email: " + pessoaReserva.getEmail());
+		// System.out.println(" Número de diárias: " + numeroDiarias);
+		// System.out.println(" Horário de início da reserva: " + horarioInicioReserva);
+		// System.out.println(" Número de identificador: " + numeroIdentificador);
+		System.out.println("-------------------------------------");
+	}
 	
 	
 	public static String escolherTipoReserva() {	
@@ -43,31 +81,6 @@ public class Reserva {
 		return  tipoReserva[sel-1];
 	}
 	
-	public int getNumeroDiarias() {
-		System.out.println("---------------------------------------\n");
-		System.out.println(" Insira o número de dias que o carro será alugado.\n");
-		numeroDiarias = sc.nextInt();
-		
-		
-		return numeroDiarias;
-	}
-	
-	public int getHorarioInicioReserva() {
-		System.out.println("---------------------------------------\n");
-		System.out.println(" Insira o horário em que o carro vai ser alugado.\n");
-		horarioInicioReserva = sc.nextInt();
-		
-		
-		return horarioInicioReserva;
-	}
-	
-	public int PreparartNumeroDaReserva() {
-		
-		
-		
-		return numeroIdentificador;
-	}
-	
 	public float calcValorTotal() {
 		
 		// valorTotalN = Veiculo.getdVeiculoN() * numeroDiarias ;
@@ -79,7 +92,8 @@ public class Reserva {
 		return valorTotalEscolhido;
 	}
 	
-	public void  cadastrarReservas() {
+	public void cadastraReserva() {		
 		
 	}
+
 }

@@ -20,9 +20,9 @@ public class V_carga extends V_utilitario {
 		setMarca(marca);
 		setModelo(modelo);
 		setRenavam(renavam);
-        setAnoFabricacao(anoFabricacao);
-        setAnoModelo(anoModelo);
-        setCapacidadeTanque(capacidadeTanque);
+		setAnoFabricacao(anoFabricacao);
+		setAnoModelo(anoModelo);
+		setCapacidadeTanque(capacidadeTanque);
 	}
 
 	public static String escolherCategoriaCarga() {		

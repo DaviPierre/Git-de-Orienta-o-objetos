@@ -13,13 +13,13 @@ public class V_passageiro extends V_utilitario{
 	}
 	
 	public V_passageiro(String marca, String modelo, String renavam, int anoFabricacao, int anoModelo,
-			int capacidadeTanque) {
+		int capacidadeTanque) {
 		setMarca(marca);
 		setModelo(modelo);
 		setRenavam(renavam);
-        setAnoFabricacao(anoFabricacao);
-        setAnoModelo(anoModelo);
-        setCapacidadeTanque(capacidadeTanque);
+		setAnoFabricacao(anoFabricacao);
+		setAnoModelo(anoModelo);
+		setCapacidadeTanque(capacidadeTanque);
 	}
 
 	public int getMaxOcupantes(){

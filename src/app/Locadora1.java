@@ -2,9 +2,12 @@ package app;
 
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthStyleFactory;
+
 import gerenciarLocatarios.Locatario;
 import gerenciarLocatarios.PessoaFisica;
 import gerenciarLocatarios.PessoaJuridica;
+import gerenciarReservas.Reserva;
 import gerenciarFrotas.Motocicleta;
 import gerenciarFrotas.V_carga;
 import gerenciarFrotas.V_passageiro;
@@ -22,10 +25,11 @@ public class Locadora1 {
 // O menu principal contido na função main - aqui que vai acontecer tudo	
 	public static void main(String[] args) {
 		
-	    ArrayList<PessoaFisica> pessoaFisica = new ArrayList<PessoaFisica>(); 
+	  ArrayList<PessoaFisica> pessoaFisica = new ArrayList<PessoaFisica>(); 
 		ArrayList<PessoaJuridica> pessoaJuridica = new ArrayList<PessoaJuridica>(); 
 	    
-	    ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();
+	  ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();
+		ArrayList<Reserva> reserva = new ArrayList<Reserva>();
 	    
 		Scanner sc = new Scanner(System.in);
 		
@@ -140,7 +144,89 @@ public class Locadora1 {
         	
         		case 3:
         			printarGerenciarReservas();
-        			printarSaindoDoPrograma();
+							Veiculo veiculoReserva = new Veiculo();
+							Locatario locatarioReserva = new Locatario();
+							boolean findVeiculo = false;
+							boolean findLocatario = false;
+							do{
+								sel2 = sc.nextInt();
+
+								switch(sel2){
+									case 1:
+
+									System.out.println("LISTA DE VEICULOS CADASTRADOS");
+										for (int i = 0; i < veiculo.size(); i++) { // Busca veiculo 
+											System.out.println(i+1 + ") Veiculo ---------------------");
+											System.out.println("Marca: " + veiculo.get(i).getMarca());
+											System.out.println("Modelo: " + veiculo.get(i).getModelo());
+											System.out.println("Ano fabricação: " + veiculo.get(i).getAnoFabricacao());
+											System.out.println("----------------------------------------\n");
+
+											System.out.println("Selecione o veiculo desejado: \n");
+											int selecVeiculo = sc.nextInt();
+
+											veiculoReserva = veiculo.get(selecVeiculo-1);
+											findVeiculo = true;
+										}
+
+									System.out.println("Escreva o nome do locatario para reserva: \n");
+									String nomeLocatario = sc.next();
+
+									for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
+										if(pessoaFisica.get(i).getNomeCompleto().contains(nomeLocatario)){
+											locatarioReserva = pessoaFisica.get(i);
+											findLocatario=true;
+										}
+									}
+									for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
+										if(pessoaJuridica.get(i).getNomeSocial().contains(nomeLocatario)){
+											locatarioReserva = pessoaJuridica.get(i);
+											findLocatario=true;
+										}
+									}
+									for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
+										for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+											if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(nomeLocatario)){
+												locatarioReserva = pessoaJuridica.get(i).listaFuncionarios.get(j);
+												findLocatario=true;
+											}
+										}
+									}
+
+									System.out.println("Qunatos dias deseja locar o veiculo? \n");
+									int qntDiasLocacao = sc.nextInt();
+
+									// System.out.println(locatarioReserva.getClass().getSimpleName()+" EMAILLLLLLLLLLLLLLL\n");
+									System.out.println("Digite a data de inicio da reserva: \n");
+									String horarioInicioReserva = getData(sc);
+									System.out.println("Digite a data de fim da reserva: \n");
+									String horarioFimReserva = getData(sc);
+
+										if(findVeiculo == true && findLocatario == true){
+											Reserva newReserva = new Reserva(veiculoReserva, locatarioReserva, qntDiasLocacao, horarioInicioReserva, horarioFimReserva, reserva.size());
+											reserva.add(newReserva);
+										}
+
+										System.out.println(reserva.size()+" TAMANHOOO");
+										for (int i = 0; i < reserva.size(); i++) {
+											System.out.println(reserva.get(i).getNumeroDiarias());
+											reserva.get(i).emitirRelatorioConsolidado();
+										}
+										// Reserva newReserva = new Reserva(, , 123, 234, 345);
+									break;
+
+									case 2:
+									break;
+									
+									case 3:
+									break;
+
+									default:
+									printarCasoDefault();
+									break;
+								}
+
+							}while(sel2 < 1 || sel2 > 3);
         			break;
         	
         		case 4:
@@ -155,10 +241,24 @@ public class Locadora1 {
 		}while(sel1 != 4);
 	}
 	
+
+	public static String getData(Scanner sc) {
+		System.out.println("Digite a data que deseja: ");
+		System.out.print("Dia: ");
+		int dia = sc.nextInt();
+		System.out.print("Mes: ");
+		int mes = sc.nextInt();
+		System.out.print("Ano: ");
+		int ano = sc.nextInt();
+		String data = dia + "/" + mes + "/" + ano;
+
+		return data;
+	}
+
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	//Funções de printar.
-	
+
 	public static void printarMenuPrincipal() {
 		System.out.println("-----------------------------------------------------------------------");
         System.out.println("      MENU PRINCIPAL\n");
@@ -436,8 +536,8 @@ public class Locadora1 {
 			cambioAutomatico = false;
 		}
 
-
-			Veiculo newV_passeio = new V_passeio(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque, arCondicionado, direcaoHidraulica, cambioAutomatico);
+			float[] valoresDiarias = setValoresDiarias(sc);
+			Veiculo newV_passeio = new V_passeio(marca, modelo, renavam, anoFabricacao, anoModelo, capacidadeTanque, arCondicionado, direcaoHidraulica, cambioAutomatico, valoresDiarias);
 			
 			CampoEmBrancoException verificarException = new CampoEmBrancoException(newV_passeio.getMarca());
 			
@@ -632,6 +732,20 @@ public class Locadora1 {
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	// Funções de Busca
+
+	public static float[] setValoresDiarias(Scanner sc) {
+		float[] valoresDiarias = new float[4];
+		System.out.println("Digite o valor da diária normal para o veículo:");
+		valoresDiarias[0] = sc.nextFloat();
+		System.out.println("Digite o valor da diária reduzida para o veículo:");
+		valoresDiarias[1] = sc.nextFloat();
+		System.out.println("Digite o valor da diária empresarial para o veículo:");
+		valoresDiarias[2] = sc.nextFloat();
+		System.out.println("Digite o valor da mensal para o veículo:");
+		valoresDiarias[3] = sc.nextFloat();		
+		return valoresDiarias;
+	}
+
 
 	public static int buscaLocatarioNome(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
 		boolean encontrou = false;

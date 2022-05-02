@@ -10,6 +10,8 @@ public class Veiculo {
 
     String marca, modelo, renavam;
     int anoFabricacao, anoModelo, capacidadeTanque;
+    float diariaN, diariaR, diariaE, valorMensal;
+    ValoresAluguel valoresAluguel;
     
 
     public Veiculo() {
@@ -23,6 +25,12 @@ public class Veiculo {
         setAnoFabricacao(anoFabricacao);
         setAnoModelo(anoModelo);
         setCapacidadeTanque(capacidadeTanque);
+        setDiariaN(diariaN);
+    }
+
+
+    public void setDiariaN(float diariaN) {
+        this.diariaN = diariaN;
     }
 
     public void setMarca(String marca) {
@@ -67,12 +75,9 @@ public class Veiculo {
         return capacidadeTanque;
     }
 
-	public String getVeiculo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+    public float getDiariaN(){
+        return diariaN;
+    }
 
 
     // public String getMarca() {

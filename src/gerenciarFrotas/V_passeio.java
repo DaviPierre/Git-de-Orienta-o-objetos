@@ -10,12 +10,13 @@ enum categoriaPasseio {
 public class V_passeio extends Veiculo {
 
 	boolean arCondicionado, direcaoHidraulica, cambioAutomatico;
+  float diariaN, diariaR, diariaE, valorMensal;
 
 	public V_passeio(){
 
 	}
 
-	public V_passeio(String marca, String modelo, String renavam, int anoFabricacao, int anoModelo, int capacidadeTanque, boolean arCondicionado, boolean direcaoHidraulica, boolean cambioAutomatico) {
+	public V_passeio(String marca, String modelo, String renavam, int anoFabricacao, int anoModelo, int capacidadeTanque, boolean arCondicionado, boolean direcaoHidraulica, boolean cambioAutomatico, float[] valoresDiarias) {
 		setMarca(marca);
 		setModelo(modelo);
 		setRenavam(renavam);
@@ -25,6 +26,11 @@ public class V_passeio extends Veiculo {
 		setArCondicionado(arCondicionado);
 		setDirecaoHidraulica(direcaoHidraulica);
 		setCambioAutomatico(cambioAutomatico);
+    setDiariaN(valoresDiarias[0]);
+    // valoresAluguel.setDiariaN(valoresDiarias[0]);
+    // valoresAluguel.setDiariaR(valoresDiarias[1]);
+    // valoresAluguel.setDiariaE(valoresDiarias[2]);
+    // valoresAluguel.setValorMensal(valoresDiarias[3]);
 	}
 
 	public void setArCondicionado(boolean arCondicionado) {
