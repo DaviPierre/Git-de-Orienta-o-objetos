@@ -13,8 +13,13 @@ enum motoPilotagem{Cidade, Estrada, Sport, OffRoad}
             
         }
         
-        public Motocicleta(String marca){
-            setMarca(marca);
+        public Motocicleta(String marca, String modelo, String renavam, int anoFabricacao, int anoModelo, int capacidadeTanque){
+        	setMarca(marca);
+    		setModelo(modelo);
+    		setRenavam(renavam);
+            setAnoFabricacao(anoFabricacao);
+            setAnoModelo(anoModelo);
+            setCapacidadeTanque(capacidadeTanque);
         }
         
         public boolean setControleTracao(){
