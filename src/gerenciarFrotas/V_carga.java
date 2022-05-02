@@ -15,6 +15,15 @@ public class V_carga extends V_utilitario {
 	
 //Preparando o vetor de strings do Enum	
 	static String[] categoriaCarga = {"Bau", "Graneleiro", "Basculante"};
+	
+	public V_carga(String marca, String modelo, String renavam, int anoFabricacao, int anoModelo, int capacidadeTanque) {
+		setMarca(marca);
+		setModelo(modelo);
+		setRenavam(renavam);
+        setAnoFabricacao(anoFabricacao);
+        setAnoModelo(anoModelo);
+        setCapacidadeTanque(capacidadeTanque);
+	}
 
 	public static String escolherCategoriaCarga() {		
 		int sel;
