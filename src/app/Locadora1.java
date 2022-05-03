@@ -285,30 +285,30 @@ public class Locadora1 {
 		System.out.println("-----------------------------------------------------------------------");
         System.out.println("      MENU PRINCIPAL\n");
         
-        System.out.println(" 1) Gerenciar Locatários\n");
-        System.out.println(" 2) Gerenciar Frota\n");
-        System.out.println(" 3) Gerenciar Reservas\n");
-        System.out.println(" 4) Sair do Programa\n");
+        System.out.println(" 1) Gerenciar Locatários");
+        System.out.println(" 2) Gerenciar Frota");
+        System.out.println(" 3) Gerenciar Reservas");
+        System.out.println(" 4) Sair do Programa");
 	}	
 	
 	public static void printarGerenciarLocatarios() {
 		System.out.println("-----------------------------------------------------------------------");
         System.out.println("      MENU LOCATÁRIOS\n");
         
-        System.out.println(" 1) Cadastrar Locatários\n");
-        System.out.println(" 2) Buscar locatário\n");
-        System.out.println(" 3) Editar Locatário\n");
-        System.out.println(" 4) Excluir locatário\n");
+        System.out.println(" 1) Cadastrar Locatários");
+        System.out.println(" 2) Buscar locatário");
+        System.out.println(" 3) Editar Locatário");
+        System.out.println(" 4) Excluir locatário");
 	}	
 	
 	public static void printarGerenciarFrotas() {
 		System.out.println("-----------------------------------------------------------------------");
-        System.out.println("      MENU FROTAS\n");
+        System.out.println("      MENU FROTAS");
         
-        System.out.println(" 1) Cadastrar veículo\n");
-        System.out.println(" 2) Buscar veículo\n");
-        System.out.println(" 3) Atualizar dados de um veículo\n");
-        System.out.println(" 4) Remover veículo da frota\n");
+        System.out.println(" 1) Cadastrar veículo");
+        System.out.println(" 2) Buscar veículo");
+        System.out.println(" 3) Atualizar dados de um veículo");
+        System.out.println(" 4) Remover veículo da frota");
 	}	
 	
 	public static void printarGerenciarReservas() {
@@ -374,10 +374,10 @@ public class Locadora1 {
 			pessoaFisica.add(newPessoaFisica);
 		}
 
-		System.out.println(" Lista de pessoas físicas registradas: \n");
-		for(PessoaFisica listaPessoaFisica: pessoaFisica) {
-			listaPessoaFisica.listarPessoaFisica();
-		}
+		// System.out.println(" Lista de pessoas físicas registradas: \n");
+		// for(PessoaFisica listaPessoaFisica: pessoaFisica) {
+		// 	listaPessoaFisica.listarPessoaFisica();
+		// }
 	}
 	
 	public static void cadastroPessoaJuridica(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica) {
@@ -426,10 +426,10 @@ public class Locadora1 {
 			pessoaJuridica.add(newPessoaJuridica);
 		}
 				
-		System.out.println(" Lista de pessoas jurídicas registradas: \n");
-		for(PessoaJuridica listaPessoaJuridica: pessoaJuridica) {
-			listaPessoaJuridica.listarPessoaJuridica();
-		}
+		// System.out.println(" Lista de pessoas jurídicas registradas: \n");
+		// for(PessoaJuridica listaPessoaJuridica: pessoaJuridica) {
+		// 	listaPessoaJuridica.listarPessoaJuridica();
+		// }
 
 		boolean novoCadastro = true;
 		
@@ -467,7 +467,7 @@ public class Locadora1 {
 
 		
 		
-		newPessoaJuridica.listaFuncionarios();
+		// newPessoaJuridica.listaFuncionarios();
 		}
 	}
 	
@@ -664,49 +664,49 @@ public class Locadora1 {
 			
 		}
 
-		for(Veiculo listaPasseio:veiculo) { // listagem veiculos
-			if(listaPasseio.getClass().getSimpleName().contains("V_passeio")){
-				System.out.print("MARCA:\n");
-				System.out.println(((V_passeio) listaPasseio).getMarca());
-				System.out.print("MODELO:\n");
-				System.out.println(((V_passeio) listaPasseio).getModelo());
-				System.out.print("RENAVAM:\n");
-				System.out.println(((V_passeio) listaPasseio).getRenavam());
-				System.out.print("\n");
+		// for(Veiculo listaPasseio:veiculo) { // listagem veiculos
+		// 	if(listaPasseio.getClass().getSimpleName().contains("V_passeio")){
+		// 		System.out.print("MARCA:\n");
+		// 		System.out.println(((V_passeio) listaPasseio).getMarca());
+		// 		System.out.print("MODELO:\n");
+		// 		System.out.println(((V_passeio) listaPasseio).getModelo());
+		// 		System.out.print("RENAVAM:\n");
+		// 		System.out.println(((V_passeio) listaPasseio).getRenavam());
+		// 		System.out.print("\n");
 				
-			 if(listaPasseio.getClass().getSimpleName().contains("V_carga")){
-					System.out.print("Veículos de Carga:\n");
-					System.out.print("MARCA:\n");
-					System.out.println(((V_carga) listaPasseio).getMarca());
-					System.out.print("MODELO:\n");
-					System.out.println(((V_carga) listaPasseio).getModelo());
-					System.out.print("RENAVAM:\n");
-					System.out.println(((V_carga) listaPasseio).getRenavam());
-					System.out.print("\n");						
-					}
-			 if(listaPasseio.getClass().getSimpleName().contains("V_passageiro")){
-					System.out.print("Veículos de Passageiro:\n");
-					System.out.print("MARCA:\n");
-					System.out.println(((V_passageiro) listaPasseio).getMarca());
-					System.out.print("MODELO:\n");
-					System.out.println(((V_passageiro) listaPasseio).getModelo());
-					System.out.print("RENAVAM:\n");
-					System.out.println(((V_passageiro) listaPasseio).getRenavam());
-					System.out.print("\n");	
-			}
-			 if(listaPasseio.getClass().getSimpleName().contains("Motocicleta")){
-					System.out.print("Motocicletas:\n");
-					System.out.print("MARCA:\n");
-					System.out.println(((Motocicleta) listaPasseio).getMarca());
-					System.out.print("MODELO:\n");
-					System.out.println(((Motocicleta) listaPasseio).getModelo());
-					System.out.print("RENAVAM:\n");
-					System.out.println(((Motocicleta) listaPasseio).getRenavam());
-					System.out.print("\n");
-			 }
+		// 	 if(listaPasseio.getClass().getSimpleName().contains("V_carga")){
+		// 			System.out.print("Veículos de Carga:\n");
+		// 			System.out.print("MARCA:\n");
+		// 			System.out.println(((V_carga) listaPasseio).getMarca());
+		// 			System.out.print("MODELO:\n");
+		// 			System.out.println(((V_carga) listaPasseio).getModelo());
+		// 			System.out.print("RENAVAM:\n");
+		// 			System.out.println(((V_carga) listaPasseio).getRenavam());
+		// 			System.out.print("\n");						
+		// 			}
+		// 	 if(listaPasseio.getClass().getSimpleName().contains("V_passageiro")){
+		// 			System.out.print("Veículos de Passageiro:\n");
+		// 			System.out.print("MARCA:\n");
+		// 			System.out.println(((V_passageiro) listaPasseio).getMarca());
+		// 			System.out.print("MODELO:\n");
+		// 			System.out.println(((V_passageiro) listaPasseio).getModelo());
+		// 			System.out.print("RENAVAM:\n");
+		// 			System.out.println(((V_passageiro) listaPasseio).getRenavam());
+		// 			System.out.print("\n");	
+		// 	}
+		// 	 if(listaPasseio.getClass().getSimpleName().contains("Motocicleta")){
+		// 			System.out.print("Motocicletas:\n");
+		// 			System.out.print("MARCA:\n");
+		// 			System.out.println(((Motocicleta) listaPasseio).getMarca());
+		// 			System.out.print("MODELO:\n");
+		// 			System.out.println(((Motocicleta) listaPasseio).getModelo());
+		// 			System.out.print("RENAVAM:\n");
+		// 			System.out.println(((Motocicleta) listaPasseio).getRenavam());
+		// 			System.out.print("\n");
+		// 	 }
 			 
-			}
-			}
+		// 	}
+		// 	}
 	}
 	
 	//----------------------------------------------------------------------------------------------------------------------------------------------
@@ -736,18 +736,18 @@ public class Locadora1 {
 
 		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
 			if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
-				System.out.println(pessoaFisica.get(i).getNomeCompleto());
-				System.out.println(pessoaFisica.get(i).getEmail());
-				System.out.println(pessoaFisica.get(i).getCpf());
+				System.out.println("Nome: " +pessoaFisica.get(i).getNomeCompleto());
+				System.out.println("Email: "+pessoaFisica.get(i).getEmail());
+				System.out.println("CPF: " +pessoaFisica.get(i).getCpf());
 				encontrou=true;
 				return i;
 			}
 		}
 		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
 			if(pessoaJuridica.get(i).getNomeSocial().contains(buscaNome)){
-				System.out.println(pessoaJuridica.get(i).getNomeSocial());
-				System.out.println(pessoaJuridica.get(i).getEmail());
-				System.out.println(pessoaJuridica.get(i).getCnpj());
+				System.out.println("Nome: " +pessoaJuridica.get(i).getNomeSocial());
+				System.out.println("Email: "+pessoaJuridica.get(i).getEmail());
+				System.out.println("CNPJ: " +pessoaJuridica.get(i).getCnpj());
 				encontrou=true;
 				return i;
 			}
@@ -758,9 +758,9 @@ public class Locadora1 {
 			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
 				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
 					System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
+					System.out.println("Nome: " +pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
+					System.out.println("Email: "+pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
+					System.out.println("CPF: " +pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
 					encontrou=true;
 					return i;
 				}
@@ -792,9 +792,9 @@ public class Locadora1 {
 
 		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca CPF pessoa fisica
 			if(pessoaFisica.get(i).getCpf().contains(buscaDoc)){
-				System.out.println(pessoaFisica.get(i).getNomeCompleto());
-				System.out.println(pessoaFisica.get(i).getEmail());
-				System.out.println(pessoaFisica.get(i).getCpf());
+				System.out.println("Nome: " +pessoaFisica.get(i).getNomeCompleto());
+				System.out.println("Email: "+pessoaFisica.get(i).getEmail());
+				System.out.println("CPF: " +pessoaFisica.get(i).getCpf());
 				encontrou=true;
 				return i;
 			}
@@ -802,9 +802,9 @@ public class Locadora1 {
 
 		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca CNPJ pessoa juridica
 			if(pessoaJuridica.get(i).getCnpj().contains(buscaDoc)){
-				System.out.println(pessoaJuridica.get(i).getNomeSocial());
-				System.out.println(pessoaJuridica.get(i).getEmail());
-				System.out.println(pessoaJuridica.get(i).getCnpj());
+				System.out.println("Nome: " +pessoaJuridica.get(i).getNomeSocial());
+				System.out.println("Email: "+pessoaJuridica.get(i).getEmail());
+				System.out.println("CNPJ: " +pessoaJuridica.get(i).getCnpj());
 				encontrou=true;
 				return i;
 			}
@@ -835,18 +835,18 @@ public class Locadora1 {
 
 		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
 			if(pessoaFisica.get(i).getEmail().contains(buscaEmail)){
-				System.out.println(pessoaFisica.get(i).getNomeCompleto());
-				System.out.println(pessoaFisica.get(i).getEmail());
-				System.out.println(pessoaFisica.get(i).getCpf());
+				System.out.println("Nome: " +pessoaFisica.get(i).getNomeCompleto());
+				System.out.println("Email: "+pessoaFisica.get(i).getEmail());
+				System.out.println("CPF: " +pessoaFisica.get(i).getCpf());
 				encontrou=true;
 				return i;
 			}
 		}
 		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
 			if(pessoaJuridica.get(i).getEmail().contains(buscaEmail)){
-				System.out.println(pessoaJuridica.get(i).getNomeSocial());
-				System.out.println(pessoaJuridica.get(i).getEmail());
-				System.out.println(pessoaJuridica.get(i).getCnpj());
+				System.out.println("Nome: " +pessoaJuridica.get(i).getNomeSocial());
+				System.out.println("Email: "+pessoaJuridica.get(i).getEmail());
+				System.out.println("CNPJ: " +pessoaJuridica.get(i).getCnpj());
 				encontrou=true;
 				return i;
 			}
@@ -857,9 +857,9 @@ public class Locadora1 {
 			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
 				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaEmail)){
 					System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
+					System.out.println("Nome: " +pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
+					System.out.println("Email: "+pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
+					System.out.println("CPF: " +pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
 					encontrou=true;
 					return i;
 				}
@@ -907,9 +907,9 @@ public class Locadora1 {
 
 			for (int i = 0; i < veiculo.size(); i++) { // Busca nome pessoa fisica
 				if(veiculo.get(i).getMarca().contains(buscaMarca)){
-					System.out.println(veiculo.get(i).getMarca());
-					System.out.println(veiculo.get(i).getModelo());
-					System.out.println(veiculo.get(i).getRenavam());
+					System.out.println("Marca: "+veiculo.get(i).getMarca());
+					System.out.println("Modelo: "+veiculo.get(i).getModelo());
+					System.out.println("Renavam: "+veiculo.get(i).getRenavam());
 					encontrou=true;
 					return i;
 				}
@@ -938,9 +938,9 @@ public class Locadora1 {
 
 			for (int i = 0; i < veiculo.size(); i++) { // Busca nome pessoa fisica
 				if(veiculo.get(i).getRenavam().contains(buscaRenavam)){
-					System.out.println(veiculo.get(i).getMarca());
-					System.out.println(veiculo.get(i).getModelo());
-					System.out.println(veiculo.get(i).getRenavam());
+					System.out.println("Marca: "+veiculo.get(i).getMarca());
+					System.out.println("Modelo: "+veiculo.get(i).getModelo());
+					System.out.println("Renavam: "+veiculo.get(i).getRenavam());
 					encontrou=true;
 					return i;
 				}
@@ -968,9 +968,9 @@ public class Locadora1 {
 
 			for (int i = 0; i < veiculo.size(); i++) { // Busca nome pessoa fisica
 				if(veiculo.get(i).getModelo().contains(buscaModelo)){
-					System.out.println(veiculo.get(i).getMarca());
-					System.out.println(veiculo.get(i).getModelo());
-					System.out.println(veiculo.get(i).getRenavam());
+					System.out.println("Marca: "+veiculo.get(i).getMarca());
+					System.out.println("Modelo: "+veiculo.get(i).getModelo());
+					System.out.println("Renavam: "+veiculo.get(i).getRenavam());
 					encontrou=true;
 					return i;
 				}
