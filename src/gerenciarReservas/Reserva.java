@@ -6,7 +6,6 @@ import gerenciarFrotas.Veiculo; // Esse imports são necessários para realizar 
 
 import gerenciarLocatarios.Locatario;
 import gerenciarLocatarios.PessoaFisica;
-import gerenciarLocatarios.PessoaJuridica;
 
 enum tipoReserva {
 	Normal, Reduzida, Empresarial, Mensal

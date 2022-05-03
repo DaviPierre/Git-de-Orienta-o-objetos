@@ -1,7 +1,5 @@
 package gerenciarFrotas;
 
-import java.util.Scanner;
-
 //Preparando o enum
 enum categoriaPasseio {
 	Compacto, Luxo, Sedan, SUV

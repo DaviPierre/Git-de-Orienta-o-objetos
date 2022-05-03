@@ -3,8 +3,6 @@
  */
 package gerenciarFrotas;
 
-import java.util.Scanner;
-
 public class Veiculo {
 	//  Scanner sc  = new Scanner(System.in);
 

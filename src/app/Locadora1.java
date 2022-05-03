@@ -2,7 +2,6 @@ package app;
 
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthStyleFactory;
 
 import gerenciarLocatarios.Locatario;
 import gerenciarLocatarios.PessoaFisica;
@@ -12,7 +11,6 @@ import gerenciarFrotas.Motocicleta;
 import gerenciarFrotas.V_carga;
 import gerenciarFrotas.V_passageiro;
 import gerenciarFrotas.V_passeio;
-import gerenciarFrotas.V_utilitario;
 import gerenciarFrotas.Veiculo;
 
 import java.util.ArrayList; // Esse import vai servir para registrar diversos usuários, veículos e reservas

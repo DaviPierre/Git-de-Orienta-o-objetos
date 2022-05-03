@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 import app.CNPJ; //Importando a classe CNPJ de outro pacote, para poder apontar corretamente e utilizar de seu método.
-import app.Endereco;
  
 public class PessoaJuridica extends Locatario {
 	Scanner sc = new Scanner(System.in); 

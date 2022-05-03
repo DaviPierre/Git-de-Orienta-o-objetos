@@ -1,6 +1,5 @@
 package gerenciarFrotas;
 
-import java.util.Scanner;
 
 public class V_utilitario extends Veiculo {
 	// Scanner sc = new Scanner(System.in);

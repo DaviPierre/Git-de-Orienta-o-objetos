@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gerenciarFrotas;
 
 import java.util.Scanner;
