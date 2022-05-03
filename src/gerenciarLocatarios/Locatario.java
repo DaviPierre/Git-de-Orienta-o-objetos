@@ -18,7 +18,8 @@ public class Locatario {
    }
    
    public Locatario( String email, String telefone) {
-	  
+		setEmail(email);
+		setTelefone(telefone);	  
    }
    
 	

@@ -810,6 +810,20 @@ public class Locadora1 {
 			}
 		}
 
+		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
+			// System.out.println(pessoaJuridica.size() + "SIZEEEEE");
+			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+				if(pessoaJuridica.get(i).getListaFuncionariosCPF(j).contains(buscaDoc)){
+					System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
+					System.out.println("Nome: " +pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
+					System.out.println("Email: "+pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
+					System.out.println("CPF: " +pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
+					encontrou=true;
+					return i;
+				}
+			}
+		}
+
 
 		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);	
 		 
@@ -855,7 +869,7 @@ public class Locadora1 {
 		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome de funcionarios
 			// System.out.println(pessoaJuridica.size() + "SIZEEEEE");
 			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
-				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaEmail)){
+				if(pessoaJuridica.get(i).getListaFuncionariosEmail(j).contains(buscaEmail)){
 					System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
 					System.out.println("Nome: " +pessoaJuridica.get(i).listaFuncionarios.get(j).getNomeCompleto());
 					System.out.println("Email: "+pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
@@ -1030,21 +1044,21 @@ public class Locadora1 {
 				}
 			}
 			if(opcao == 2){
-				if(pessoaFisica.get(i).getEmail().contains(buscaNome)){
+				if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
 					encontrou=true;
 					pessoaFisica.get(i).setEmail(lerEmail(sc));
 					System.out.println(pessoaFisica.get(i).getEmail());
 				}
 			}
 			if(opcao == 3){
-				if(pessoaFisica.get(i).getCpf().contains(buscaNome)){
+				if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
 					encontrou=true;
 					pessoaFisica.get(i).setCpf(lerCpf(sc));
 					System.out.println(pessoaFisica.get(i).getCpf());
 				}
 			}
 			if(opcao == 4){
-				if(pessoaFisica.get(i).getTelefone().contains(buscaNome)){
+				if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
 					encontrou=true;
 					pessoaFisica.get(i).setTelefone(lerTelefone(sc));
 					System.out.println(pessoaFisica.get(i).getTelefone());
@@ -1064,14 +1078,14 @@ public class Locadora1 {
 				}
 			}
 			if(opcao == 2){
-				if(pessoaJuridica.get(k).getEmail().contains(buscaNome)){
+				if(pessoaJuridica.get(k).getNomeSocial().contains(buscaNome)){
 					encontrou=true;
 					pessoaJuridica.get(k).setEmail(lerEmail(sc));
 					System.out.println(pessoaJuridica.get(k).getEmail());
 				}
 				}
 			if(opcao == 3){
-				if(pessoaJuridica.get(k).getCnpj().contains(buscaNome)){
+				if(pessoaJuridica.get(k).getNomeSocial().contains(buscaNome)){
 					encontrou=true;
 					pessoaJuridica.get(k).setCnpj(lerCnpj(sc));
 					System.out.println(pessoaJuridica.get(k).getCnpj());
@@ -1079,7 +1093,7 @@ public class Locadora1 {
     		}
 			
 			if(opcao == 4){
-				if(pessoaJuridica.get(k).getTelefone().contains(buscaNome)){
+				if(pessoaJuridica.get(k).getNomeSocial().contains(buscaNome)){
 					encontrou=true;
 					pessoaJuridica.get(k).setTelefone(lerTelefone(sc));
 					System.out.println(pessoaJuridica.get(k).getTelefone());
@@ -1100,26 +1114,32 @@ public class Locadora1 {
 				}
 			}
 			if(opcao == 2){
-				if(pessoaFisica.get(i).getEmail().contains(buscaNome)){
-					encontrou=true;
-					pessoaFisica.get(i).setEmail(lerEmail(sc));
-					System.out.println(pessoaFisica.get(i).getEmail());
+				for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+					if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
+						encontrou=true;
+						pessoaJuridica.get(i).listaFuncionarios.get(j).setEmail(lerEmail(sc));
+						System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getEmail());
+					}
 				}
 			}
 			if(opcao == 3){
-				if(pessoaFisica.get(i).getCpf().contains(buscaNome)){
-					encontrou=true;
-					pessoaFisica.get(i).setCpf(lerCpf(sc));
-					System.out.println(pessoaFisica.get(i).getCpf());
+				for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+					if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
+						encontrou=true;
+						pessoaJuridica.get(i).listaFuncionarios.get(j).setCpf(lerCpf(sc));
+						System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getCpf());
+					}
 				}
 			}
 			if(opcao == 4){
-				if(pessoaFisica.get(i).getTelefone().contains(buscaNome)){
-				encontrou=true;
-					pessoaFisica.get(i).setTelefone(lerTelefone(sc));
-					System.out.println(pessoaFisica.get(i).getTelefone());
+				for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
+					if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
+						encontrou=true;
+						pessoaJuridica.get(i).listaFuncionarios.get(j).setTelefone(lerTelefone(sc));
+						System.out.println(pessoaJuridica.get(i).listaFuncionarios.get(j).getTelefone());
+					}
 				}
-             }
+			}
 			}			
 		}
 		
@@ -1162,16 +1182,16 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 				}
 			}
 			if(opcao == 2){
-				if(veiculo.get(i).getModelo().contains(buscaNome)){
+				if(veiculo.get(i).getMarca().contains(buscaNome)){
 					encontrou=true;
 					veiculo.get(i).setModelo(lerModelo(sc));
 					System.out.println(veiculo.get(i).getModelo());
 				}
 			}
 			if(opcao == 3){
-				if(veiculo.get(i).getRenavam().contains(buscaNome)){
+				if(veiculo.get(i).getMarca().contains(buscaNome)){
 					encontrou=true;
-					veiculo.get(i).setRenavam(lerCpf(sc));
+					veiculo.get(i).setRenavam(lerRenavam(sc));
 					System.out.println(veiculo.get(i).getRenavam());
 				}
 			}			
@@ -1206,15 +1226,17 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 
 		for (int i = 0; i < pessoaFisica.size(); i++) { // Busca nome pessoa fisica
 			if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
-				System.out.println(pessoaFisica.remove(i));
+				pessoaFisica.remove(i);
+				System.out.println("Pessoa física deletada com sucesso!\n");
 				encontrou=true;
 			}
 		}
 
 		for (int i = 0; i < pessoaJuridica.size(); i++) { // Busca nome pessoa juridica
 			if(pessoaJuridica.get(i).getNomeSocial().contains(buscaNome)){
-				System.out.println(pessoaJuridica.remove(i));
+				pessoaJuridica.remove(i);
 				encontrou=true;
+				System.out.println("Pessoa jurídica deletada com sucesso!\n");
 			}
 		}
 			
@@ -1223,8 +1245,9 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 			for (int j = 0; j < pessoaJuridica.get(i).listaFuncionarios.size(); j++) {
 				if(pessoaJuridica.get(i).getListaFuncionarios(j).contains(buscaNome)){
 					// System.out.println("Funcinario ligado a empresa:" + pessoaJuridica.get(i).getNomeSocial());
-					System.out.println(pessoaJuridica.get(i).listaFuncionarios.remove(j));
+					pessoaJuridica.get(i).listaFuncionarios.remove(j);
 					encontrou=true;
+					System.out.println("Funcionário deletado com sucesso!\n");
 				}
 			}
 		}
@@ -1252,7 +1275,8 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 
 		for (int i = 0; i < veiculo.size(); i++) { // Busca nome pessoa fisica
 			if(veiculo.get(i).getMarca().contains(buscaNome)){
-				System.out.println(veiculo.remove(i));
+				veiculo.remove(i);
+				System.out.println("Veículo deletado com sucesso!\n");
 				encontrou=true;
 			}
 		}

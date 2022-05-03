@@ -32,7 +32,7 @@ public class ObjetoNaoEncontradoException extends RuntimeException {
 	        }else{
 	         exception = 0;
 	        }
-		  	System.out.println(" find = " + this.find);  
+		  	// System.out.println(" find = " + this.find);  
 		  return exception;
 	    }
 

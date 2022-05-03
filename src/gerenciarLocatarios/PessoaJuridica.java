@@ -73,5 +73,13 @@ public class PessoaJuridica extends Locatario {
 		return listaFuncionarios.get(i).getNomeCompleto();
 	}
 
+	public String getListaFuncionariosEmail(int i){
+		return listaFuncionarios.get(i).getEmail();
+	}
+
+	public String getListaFuncionariosCPF(int i){
+		return listaFuncionarios.get(i).getCpf();
+	}
+
 }   
 
