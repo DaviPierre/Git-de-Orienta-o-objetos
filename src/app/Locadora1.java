@@ -146,6 +146,7 @@ public class Locadora1 {
         			printarGerenciarReservas();
 							Veiculo veiculoReserva = new Veiculo();
 							Locatario locatarioReserva = new Locatario();
+							int excecao_achar = 1;
 							boolean findVeiculo = false;
 							boolean findLocatario = false;
 							do{
@@ -191,17 +192,29 @@ public class Locadora1 {
 											}
 										}
 									}
+									
+									ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(findLocatario);
+									
+									try{				
+										excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(findLocatario);
+									}catch(ObjetoNaoEncontradoException t){
+										if(findLocatario == false){
+											findLocatario = true;
+										}
+										System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+									}finally{
+										 
+									}	
 
-									System.out.println("Qunatos dias deseja locar o veiculo? \n");
-									int qntDiasLocacao = sc.nextInt();
+									if(excecao_achar == 0) {
+										System.out.println("Qunatos dias deseja locar o veiculo? \n");
+										int qntDiasLocacao = sc.nextInt();
 
-									// System.out.println(locatarioReserva.getClass().getSimpleName()+" EMAILLLLLLLLLLLLLLL\n");
-									System.out.println("Digite a data de inicio da reserva: \n");
-									String horarioInicioReserva = getData(sc);
-									System.out.println("Digite a data de fim da reserva: \n");
-									String horarioFimReserva = getData(sc);
-
-
+										// System.out.println(locatarioReserva.getClass().getSimpleName()+" EMAILLLLLLLLLLLLLLL\n");
+										System.out.println("Digite a data de inicio da reserva: \n");
+										String horarioInicioReserva = getData(sc);
+										System.out.println("Digite a data de fim da reserva: \n");
+										String horarioFimReserva = getData(sc);
 
 										if(findVeiculo == true && findLocatario == true){
 											Reserva newReserva = new Reserva(veiculoReserva, locatarioReserva, qntDiasLocacao, horarioInicioReserva, horarioFimReserva, reserva.size()+1);
@@ -213,6 +226,7 @@ public class Locadora1 {
 										// 	reserva.get(i).emitirRelatorioConsolidado();
 										// }
 										// Reserva newReserva = new Reserva(, , 123, 234, 345);
+									}
 									break;
 
 									case 2:
@@ -305,7 +319,6 @@ public class Locadora1 {
         
         System.out.println(" 1) Realizar reserva\n");
         System.out.println(" 2) Emitir relatário(s) de reserva(s)\n");
-        System.out.println(" 3) Emitir relatário consolidado de reserva(s)\n");
 	}	
 	
 	public static void printarGerenciarLocadora() {
@@ -340,7 +353,7 @@ public class Locadora1 {
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	// Funções de Cadastro
 	public static void cadastroPessoaFisica(ArrayList<PessoaFisica> pessoaFisica) {
-		int excecao_nome = 1, excecao_email = 1, excecao_cpf = 1;
+		int excecao_nome = 1, excecao_email = 1, excecao_cpf = 1, excecao_telefone = 1;
 		
 		Scanner sc = new Scanner(System.in);
 
@@ -353,12 +366,13 @@ public class Locadora1 {
 			excecao_nome = verificarException.verificandoCampoEmBranco(newPessoaFisica.getNomeCompleto());
 			excecao_email = verificarException.verificandoCampoEmBranco(newPessoaFisica.getEmail());
 			excecao_cpf = verificarException.verificandoCampoEmBranco(newPessoaFisica.getCpf());
+			excecao_telefone = verificarException.verificandoCampoEmBranco(newPessoaFisica.getTelefone());
 		}catch (CampoEmBrancoException c) {
 			System.out.println(" Exceção detectada: Os dados inseridos têm de ser maiores do que um carácter.\n");		
 			System.out.println(" O cadastro não será considerado.\n");	
 		}
 		
-		if(excecao_nome == 0 && excecao_cpf == 0 && excecao_email == 0){
+		if(excecao_nome == 0 && excecao_cpf == 0 && excecao_email == 0 && excecao_telefone == 0){
 			pessoaFisica.add(newPessoaFisica);
 		}
 
@@ -369,7 +383,7 @@ public class Locadora1 {
 	}
 	
 	public static void cadastroPessoaJuridica(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica) {
-		int excecao_nome = 1, excecao_email = 1, excecao_cnpj = 1, excecao_cpf = 1, excecao_nome_c = 1, excecao_email_f = 1;
+		int excecao_nome = 1, excecao_email = 1, excecao_cnpj = 1, excecao_cpf = 1, excecao_nome_c = 1, excecao_email_f = 1, excecao_telefone = 1, excecao_telefone_f = 1;
 		
 		Scanner sc = new Scanner(System.in);
 
@@ -404,12 +418,13 @@ public class Locadora1 {
 			excecao_nome = verificarException.verificandoCampoEmBranco(newPessoaJuridica.getNomeSocial());
 			excecao_email = verificarException.verificandoCampoEmBranco(newPessoaJuridica.getEmail());
 			excecao_cnpj = verificarException.verificandoCampoEmBranco(newPessoaJuridica.getCnpj());
+			excecao_telefone = verificarException.verificandoCampoEmBranco(newPessoaJuridica.getTelefone());
 		}catch (CampoEmBrancoException c) {
 			System.out.println(" Exceção detectada: Os dados inseridos têm de ser maiores do que um carácter.\n");		
 			System.out.println(" O cadastro não será considerado.\n");	
 		}
 		
-		if(excecao_nome == 0 && excecao_cnpj == 0 && excecao_email == 0){
+		if(excecao_nome == 0 && excecao_cnpj == 0 && excecao_email == 0 && excecao_telefone == 0){
 			pessoaJuridica.add(newPessoaJuridica);
 		}
 				
@@ -420,7 +435,7 @@ public class Locadora1 {
 
 		boolean novoCadastro = true;
 		
-		if(excecao_nome == 0 && excecao_cnpj == 0 && excecao_email == 0){
+		if(excecao_nome == 0 && excecao_cnpj == 0 && excecao_email == 0 && excecao_telefone == 0){
 		do{
 			System.out.println("---------------------------------------\n");
 			System.out.println(" Deseja adicionar um novo cadastro de funcionario?\n");
@@ -435,6 +450,7 @@ public class Locadora1 {
 					excecao_nome_c = verificarException.verificandoCampoEmBranco(novoFuncionario.getNomeCompleto());
 					excecao_email_f = verificarException.verificandoCampoEmBranco(novoFuncionario.getEmail());
 					excecao_cpf = verificarException.verificandoCampoEmBranco(novoFuncionario.getCpf());
+					excecao_telefone_f = verificarException.verificandoCampoEmBranco(novoFuncionario.getTelefone());
 				}catch (CampoEmBrancoException c) {
 					System.out.println(" Exceção detectada: Os dados inseridos têm de ser maiores do que um carácter.\n");		
 					System.out.println(" O cadastro não será considerado.\n");	
@@ -458,18 +474,6 @@ public class Locadora1 {
 	}
 	
 	public static void cadastrarVeiculo(ArrayList<Veiculo> veiculo) {
-
-		// int i=0;
-		// while(i != 2){
-		// 	Veiculo passeio = new V_passeio("AAA" + i,"b","c",true, true, false);
-		// 	System.out.println(((V_passeio) passeio).getMarca());
-		// 	veiculo.add(passeio);
-		// 	i++;
-		// }
-
-		// for(Veiculo listaPasseio:veiculo) {
-		// 	System.out.println(((V_passeio) listaPasseio).getMarca() + "DEu");
-		// }
 
 		Scanner sc = new Scanner(System.in);
 		
@@ -664,7 +668,6 @@ public class Locadora1 {
 
 		for(Veiculo listaPasseio:veiculo) { // listagem veiculos
 			if(listaPasseio.getClass().getSimpleName().contains("V_passeio")){
-				System.out.print("Veículos de Passeio:\n");
 				System.out.print("MARCA:\n");
 				System.out.println(((V_passeio) listaPasseio).getMarca());
 				System.out.print("MODELO:\n");
@@ -672,75 +675,41 @@ public class Locadora1 {
 				System.out.print("RENAVAM:\n");
 				System.out.println(((V_passeio) listaPasseio).getRenavam());
 				System.out.print("\n");
-			}
-			if(listaPasseio.getClass().getSimpleName().contains("V_carga")){
 				
+			 if(listaPasseio.getClass().getSimpleName().contains("V_carga")){
+					System.out.print("Veículos de Carga:\n");
+					System.out.print("MARCA:\n");
+					System.out.println(((V_carga) listaPasseio).getMarca());
+					System.out.print("MODELO:\n");
+					System.out.println(((V_carga) listaPasseio).getModelo());
+					System.out.print("RENAVAM:\n");
+					System.out.println(((V_carga) listaPasseio).getRenavam());
+					System.out.print("\n");						
+					}
+			 if(listaPasseio.getClass().getSimpleName().contains("V_passageiro")){
+					System.out.print("Veículos de Passageiro:\n");
+					System.out.print("MARCA:\n");
+					System.out.println(((V_passageiro) listaPasseio).getMarca());
+					System.out.print("MODELO:\n");
+					System.out.println(((V_passageiro) listaPasseio).getModelo());
+					System.out.print("RENAVAM:\n");
+					System.out.println(((V_passageiro) listaPasseio).getRenavam());
+					System.out.print("\n");	
 			}
-			if(listaPasseio.getClass().getSimpleName().contains("V_passageiro")){
-				
+			 if(listaPasseio.getClass().getSimpleName().contains("Motocicleta")){
+					System.out.print("Motocicletas:\n");
+					System.out.print("MARCA:\n");
+					System.out.println(((Motocicleta) listaPasseio).getMarca());
+					System.out.print("MODELO:\n");
+					System.out.println(((Motocicleta) listaPasseio).getModelo());
+					System.out.print("RENAVAM:\n");
+					System.out.println(((Motocicleta) listaPasseio).getRenavam());
+					System.out.print("\n");
+			 }
+			 
 			}
-			if(listaPasseio.getClass().getSimpleName().contains("Motocicleta")){
-
 			}
-			
 	}
-	}
-
-
-	
-//	public void relacionaReserva (ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica,  ArrayList<Veiculo> veiculo){
-//	    int j;
-//	    boolean encontrou, encontrou2;
-//	    String buscaNome, buscaVeiculo, resposta;
-//	    int escolha;
-//	    
-//	    Scanner sc = new Scanner(System.in);
-	    
-	// HUD 
-//	    System.out.println("Por favor, insira o nome da pessoa que deseja pesquisar./n");
-//	    buscaNome = sc.next();
-//	    System.out.println("Por favor insira o veículo a ser reservado");
-//	    buscaVeiculo = sc.next();
-
-//	    for(int i = 0; i < pessoaFisica.size(); i++){
-//	        if(pessoaFisica.get(i).getNomeCompleto().contains(buscaNome)){
-//	            encontrou = true;
-//	        }
-//	    }
-
-//	    for(int i = 0; i < veiculo.size(); i++){
-//	        if(veiculo.get(i).getVeiculo().contains(buscaVeiculo)){
-//	            encontrou2 = true;
-//	        }
-//	    }
-
-//	    if(encontrou == true && encontrou2 == true){
-	      
-//	        	System.out.println("O nome " + buscaNome + " e o veículo " + buscaVeiculo + " foram encontrados/n Criar uma reserva?/n");
-//	            System.out.println("Digite 1 para criar e 2 para não criar./n");
-	        
-//	        	escolha = sc.nextInt();
-	        	
-//	        	if(escolha == 1) {
-//	        		j++;
-	//        		reserva(j) = buscaNome + buscaVeiculo;
-//	        	}
-//	    }
-	    
-//	    if (encontrou == false){
-//	        System.out.println("Não foi possível encontrar a pessoa física pesquisada, por favor tente novamente");
-//	    }
-	    
-//	    if (encontrou2 == false){
-//	        System.out.println("Não foi possível encontrar o veiculo pesquisado, por favor tente novamente");
-	    
-//	    }
-//	    if(encontrou == false && encontrou2 == false){
-//	        System.out.println("Não foi possível encontrar nem a pessoa física nem o veiculo pesquisado, por favor tente novamente");
-//	    }
-
-//	}
-	
 	
 	//----------------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------------------------------------------------
@@ -763,6 +732,7 @@ public class Locadora1 {
 	public static int buscaLocatarioNome(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
 		boolean encontrou = false;
 		String buscaNome;
+		int excecao_achar = 1;
 		System.out.println("Insira o nome do locatário que deseja buscar: ");
 		buscaNome = sc.next();
 
@@ -799,15 +769,26 @@ public class Locadora1 {
 			}
 		}
 
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
-		}
-		return -1;
+		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);	
+		 
+		 try{				
+			excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+		}catch(ObjetoNaoEncontradoException t) {
+			if(encontrou == false) {
+				encontrou = true;
+			}
+			System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+		}finally {
+			
+		
+		}	
+		 return -1;
 	}
 
 	public static int buscaLocatarioCPF_CNPJ(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
 		boolean encontrou = false;
 		String buscaDoc;
+		int excecao_achar = 1;
 		System.out.println("Insira o CNPJ ou CPF do locatário que deseja buscar: ");
 		buscaDoc = sc.next();
 
@@ -832,15 +813,25 @@ public class Locadora1 {
 		}
 
 
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse CPF ou CNPJ.");
-		}
-		return -1;
+		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);	
+		 
+		 try{				
+			excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+		}catch(ObjetoNaoEncontradoException t) {
+			if(encontrou == false) {
+				encontrou = true;
+			}
+			System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+		}finally {
+			
+		}	
+		 return -1;
 	}
 
 	public static int buscaLocatarioEmail(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
 		boolean encontrou = false;
 		String buscaEmail;
+		int excecao_achar = 1;
 		System.out.println("Insira o email do locatário que deseja buscar: ");
 		buscaEmail = sc.next();
 
@@ -877,16 +868,25 @@ public class Locadora1 {
 			}
 		}
 
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse email.");
-		}
+		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);	
+		 
+		 try{				
+			excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+		}catch(ObjetoNaoEncontradoException t) {
+			if(encontrou == false) {
+				encontrou = true;
+			}
+			System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+		}finally {
+			
+		}	
 		return -1;
 	}
 	
 	public static int buscaVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 		boolean encontrou = false;
 		String buscaMarca, buscaRenavam, buscaModelo;
-		int escolha;
+		int escolha, excecao_achar = 1;
 		
 		do {
 	
@@ -918,10 +918,19 @@ public class Locadora1 {
 			}
 			
 
-			if(!encontrou){
-				System.out.println("Não foi encontrado nenhum veículo com essa marca.");
-			}
-			return -1;
+			ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);	
+			 
+			 try{				
+				excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+			}catch(ObjetoNaoEncontradoException t){
+				if(encontrou == false){
+					encontrou = true;
+				}
+				System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+			}finally{
+				 
+			}	
+			 return -1;
 		
 		
 		case 2:
@@ -940,10 +949,19 @@ public class Locadora1 {
 			}
 			
 
-			if(!encontrou){
-				System.out.println("Não foi encontrado nenhum veículo com esse RENAVAM.");
-			}
-			return -1;
+			ObjetoNaoEncontradoException verificandoBusca2 = new ObjetoNaoEncontradoException(encontrou);	
+			 
+			 try{				
+				excecao_achar = verificandoBusca2.verificandoObjetoNaoEncontrado(encontrou);
+			}catch(ObjetoNaoEncontradoException t){
+				if(encontrou == false){
+					encontrou = true;
+				}
+				System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+			}finally{
+				 
+			}	
+			 return -1;
 			
 		case 3:
 			
@@ -961,10 +979,19 @@ public class Locadora1 {
 			}
 			
 
-			if(!encontrou){
-				System.out.println("Não foi encontrado nenhum veículo com esse modelo.");
-			}
-			return -1;
+			ObjetoNaoEncontradoException verificandoBusca3 = new ObjetoNaoEncontradoException(encontrou);
+			
+			try{				
+				excecao_achar = verificandoBusca3.verificandoObjetoNaoEncontrado(encontrou);
+			}catch(ObjetoNaoEncontradoException t){
+				if(encontrou == false){
+					encontrou = true;
+				}
+				System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+			}finally{
+				 
+			}	
+			 return -1;
 			
 		
 		default:
@@ -983,6 +1010,7 @@ public class Locadora1 {
 	public static void alterarDadosLocatario(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
 		
 		boolean encontrou = false;
+		int excecao_achar = 1;
 		String buscaNome = null;
 		
 		System.out.println("--------------------------------------------------------------------------\n");
@@ -1097,9 +1125,18 @@ public class Locadora1 {
 			}			
 		}
 		
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
-		}
+		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);
+		
+		try{				
+			excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+		}catch(ObjetoNaoEncontradoException t){
+			if(encontrou == false){
+				encontrou = true;
+			}
+			System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+		}finally{
+			 
+		}	
 			
 	}
 	
@@ -1107,6 +1144,7 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 		
 		boolean encontrou = false;
 		String buscaNome = null;
+		int excecao_achar = 1;
 		
 		System.out.println("-----------------------------------------------------------------\n");
 		System.out.println("	       ALTERAÇÃO DE DADOS DE VEÍCULO\n");
@@ -1143,9 +1181,18 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 		}
 		
 		
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
-		}
+		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);
+		
+		try{				
+			excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+		}catch(ObjetoNaoEncontradoException t){
+			if(encontrou == false){
+				encontrou = true;
+			}
+			System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+		}finally{
+			 
+		}	
 			
 	}
 
@@ -1155,6 +1202,7 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 	public static void deletarLocatarioNome(ArrayList<PessoaJuridica> pessoaJuridica, ArrayList<PessoaFisica> pessoaFisica, Scanner sc){
 		boolean encontrou = false;
 		String buscaNome;
+		int excecao_achar = 1;
 		System.out.println("Insira o nome do locatário que deseja deletar: ");
 		buscaNome = sc.next();
 
@@ -1183,14 +1231,24 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 			}
 		}
 
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum locatário com esse nome.");
-		}
+		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);
+		
+		try{				
+			excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+		}catch(ObjetoNaoEncontradoException t){
+			if(encontrou == false){
+				encontrou = true;
+			}
+			System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+		}finally{
+			 
+		}	
 	}
 	
 	public static void deletarVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 		boolean encontrou = false;
 		String buscaNome;
+		int excecao_achar = 1;
 		System.out.println("Insira a marca do veículo que deseja deletar: ");
 		buscaNome = sc.next();
 
@@ -1202,9 +1260,18 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 		}
 
 
-		if(!encontrou){
-			System.out.println("Não foi encontrado nenhum veículo com essa marca.");
-		}
+		ObjetoNaoEncontradoException verificandoBusca = new ObjetoNaoEncontradoException(encontrou);
+		
+		try{				
+			excecao_achar = verificandoBusca.verificandoObjetoNaoEncontrado(encontrou);
+		}catch(ObjetoNaoEncontradoException t){
+			if(encontrou == false){
+				encontrou = true;
+			}
+			System.out.println("Exceção detectada: Nenhum item com essa descrição foi encontrado.\n");		
+		}finally{
+			 
+		}	
 	}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
@@ -1293,27 +1360,6 @@ public static void alterarDadosVeiculo(ArrayList<Veiculo> veiculo, Scanner sc){
 
 		return renavam;
 	}
+ }
 //---------------------------------------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------------------------------------	
-		
-	
-	public void editarLocatarios() {
-		
-	}
-	
-	public void pesquisarVeiculos() {
-		
-	}
-
-	public void editarVeiculos() {
-	
-	}
-		
-	public void emitirRelatorio() {
-		
-	}
-	
-	public void emitirRelatorioConsolidado() {
-		
-	}
-  }
+//---------------------------------------------------------------------------------------------------------------------------------------------			
